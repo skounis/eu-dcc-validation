@@ -17,6 +17,22 @@ The creation of a Validation Portal is suggested which will:
 
 ![Wire 02](./misc/wire-02.png)
 
+#### Validation Flow 
+
+1.	The interface pulls the QR codes from GitHub and displays them one by one.
+2.	The user can navigate between the QR codes by using the Previous/Next buttons. The QR codes are also available in a list grouped by Country 
+3.	The user uses the Verifier app and scans the QR Code in the display.
+4.	If the Scan gives no errors the user presses the Green (Passed) button.
+5.	If the Scan gives errors or warning the user fills in a copy describing the situation and pressed the amber or red button respectively.
+
+**Automation**
+1.	The user registers once the MS who uses the Verifier app for. 
+2.	The application keeps track of all the submitted data and relates them with the QR Codes.
+3.	The application exports the captured results in JSON. 
+4.	The application would provide the option for the user to take a photo of the verifier app showing the error message. The application will store these images and will relate them to the results. 
+
+
+
 ## Development instructions 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
 
