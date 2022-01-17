@@ -1,6 +1,8 @@
 # EU DCC Validation process
-
 The purpose of this initiative is the automation of the EU DCC validation process. 
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://eu-dcc-validation.web.app/)
+
 ## Introduction 
 ### Validation Cycle 
 During the “Validation Cycle” the member states are using their Verifier App and scan the [DCCs in the Quality Assurance](https://github.com/eu-digital-green-certificates/dcc-quality-assurance) repository. 
