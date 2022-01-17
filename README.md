@@ -31,7 +31,31 @@ The creation of a Validation Portal is suggested which will:
 3.	The application exports the captured results in JSON. 
 4.	The application would provide the option for the user to take a photo of the verifier app showing the error message. The application will store these images and will relate them to the results. 
 
-
+### Result format
+Test results are provided one json file per platform.
+```
+[{
+	"file": "NL/1.3.0/REC.png",		
+	"result": "Valid|Invalid|Error",
+	"comment": "Free text"
+},{
+	"file": "NL/1.3.0/REC.png",		
+	"result": "Valid|Invalid|Error",
+	"comment": "Free text"	
+}]
+```
+`file`: the relative path to the test file from the root of the QA repository. this path is returned by the github API if you use that.
+`result`: the test result, `Valid` for valid, `Invalid` if the DCC was scanned but deemed invalid, `Error` if the DCC did not scan.
+`comment`: optional free text explaining the result if it isn't `Valid`
+The file name contains the country code, the test date and the platform:
+```
+YYYYDDMM-XX-PLATFORM.json
+```
+So for NL tests conducted on 2022-01-17 you have these two files (for both platforms):
+```
+20220117-NL-ANDROID.json
+20220117-NL-IOS.json
+```
 
 ## Development instructions 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
