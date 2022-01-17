@@ -13,6 +13,8 @@ The creation of a Validation Portal is suggested which will:
 * Capture the results from the countries in a comfortable way. 
 * Export the results in a standard JSON format.  
 
+https://github.com/skounis/eu-dcc-validation/blob/main/misc/wire-01.png
+https://github.com/skounis/eu-dcc-validation/blob/main/misc/wire-02.png
 
 ## Development instructions 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
