@@ -46,9 +46,11 @@ Test results are provided one json file per platform.
 	"comment": "Free text"	
 }]
 ```
-`file`: the relative path to the test file from the root of the QA repository. this path is returned by the github API if you use that.
-`result`: the test result, `Valid` for valid, `Invalid` if the DCC was scanned but deemed invalid, `Error` if the DCC did not scan.
-`comment`: optional free text explaining the result if it isn't `Valid`
+
+* `file`: the relative path to the test file from the root of the QA repository. this path is returned by the github API if you use that.
+* `result`: the test result, `Valid` for valid, `Invalid` if the DCC was scanned but deemed invalid, `Error` if the DCC did not scan.
+* `comment`: optional free text explaining the result if it isn't `Valid`
+
 The file name contains the country code, the test date and the platform:
 ```
 YYYYDDMM-XX-PLATFORM.json
