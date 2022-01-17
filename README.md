@@ -1,7 +1,7 @@
 # EU DCC Validation process
-The purpose of this initiative is the automation of the EU DCC validation process. 
+[![Issues](https://img.shields.io/github/issues/skounis/eu-dcc-validation?style=for-the-badge)](https://github.com/users/skounis/projects/4) [![License](https://img.shields.io/github/license/skounis/eu-dcc-validation?style=for-the-badge)](https://github.com/skounis/eu-dcc-validation#licensing) [![Live Demo](https://img.shields.io/badge/Live-Demo-green?style=for-the-badge)](https://eu-dcc-validation.web.app/)
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://eu-dcc-validation.web.app/)
+The purpose of this initiative is the automation of the EU DCC validation process.
 
 ## Introduction 
 ### Validation Cycle 
