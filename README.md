@@ -85,7 +85,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 # Licensing
-Copyright (c) 2022 Stavros Kounis (DIRECTORATE-GENERAL CONNECT), Ryan Barrett (Dutch Ministry of Health, Science, and Sports), and all other contributors
+Copyright (c) 2022 Stavros Kounis (Directorate-General CONNECT), Ryan Barrett (Dutch Ministry of Health, Science, and Sports), and all other contributors
 
 Licensed under the EUROPEAN UNION PUBLIC LICENCE v. 1.2 (the "License"); you may not use this file except in compliance with the License.
 
