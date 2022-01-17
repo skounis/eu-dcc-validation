@@ -61,6 +61,9 @@ So for NL tests conducted on 2022-01-17 you have these two files (for both platf
 20220117-NL-IOS.json
 ```
 
+#### Schema
+The `results.json` should satisfy the [results.schema.json](https://github.com/skounis/eu-dcc-validation/blob/main/results.schema.json)
+
 ## Planning and Roadmap
 Visit the [EU DCC Validation Planning project](https://github.com/users/skounis/projects/4/views/1)
 
