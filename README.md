@@ -57,6 +57,9 @@ So for NL tests conducted on 2022-01-17 you have these two files (for both platf
 20220117-NL-IOS.json
 ```
 
+## Planning and Roadmap
+Visit the [EU DCC Validation Planning project](https://github.com/users/skounis/projects/4/views/1)
+
 ## Development instructions 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
 
