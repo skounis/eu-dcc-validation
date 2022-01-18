@@ -15,13 +15,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { QRTreeComponent } from './qrtree/qrtree.component';
 import { DCCQRComponent } from './dccqr/dccqr.component';
+import { DCCDescriptionComponent } from './dccdescription/dccdescription.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     QRTreeComponent,
-    DCCQRComponent
+    DCCQRComponent,
+    DCCDescriptionComponent
   ],
   imports: [
     BrowserModule,
