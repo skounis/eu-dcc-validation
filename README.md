@@ -64,6 +64,9 @@ So for NL tests conducted on 2022-01-17 you have these two files (for both platf
 #### Schema
 The `results.json` should satisfy the [results.schema.json](https://github.com/skounis/eu-dcc-validation/blob/main/results.schema.json)
 
+### Client / Server architecture
+![Client / Server](./misc/client-server-01.png)
+
 ## Planning and Roadmap
 Visit the [EU DCC Validation Planning project](https://github.com/users/skounis/projects/4/views/1)
 
