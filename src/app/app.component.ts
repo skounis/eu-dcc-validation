@@ -7,26 +7,11 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
  * QR data with nested structure.
  * Each node has a name and an optional list of children.
  */
-interface QRNode {
+export interface QRNode {
   name: string;
   children?: QRNode[];
 }
 
-
-const TREE_DATA: QRNode[] = [
-  {
-    name: 'Greece',
-    children: [{ name: 'QR01 - Vaccination ' }, { name: 'QR-02 - Test' }, { name: 'QR-03 - Recovery' }],
-  },
-  {
-    name: 'The Netherlands',
-    children: [{ name: 'QR01 - Vaccination ' }, { name: 'QR-02 - Test' }, { name: 'QR-03 - Recovery' }],
-  },
-  {
-    name: 'Germany',
-    children: [{ name: 'QR01 - Vaccination ' }, { name: 'QR-02 - Test' }, { name: 'QR-03 - Recovery' }],
-  },
-];
 
 // Sample
 // https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/release/1.3.0/examples/vaccination/simple.json
@@ -62,16 +47,12 @@ const DCC_DATA: QRNode[] = [
   }
 ];
 
-
-
-
 /** Flat node with expandable and level information */
-interface FlatNode {
+export interface FlatNode {
   expandable: boolean;
   name: string;
   level: number;
 }
-
 
 @Component({
   selector: 'app-root',
@@ -102,10 +83,8 @@ export class AppComponent {
     node => node.children,
   );
 
-  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
   dataSource2 = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
   constructor() {
-    this.dataSource.data = TREE_DATA;
     this.dataSource2.data = DCC_DATA;
   }
 

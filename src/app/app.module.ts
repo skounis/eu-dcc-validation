@@ -12,12 +12,14 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { QRTreeComponent } from './qrtree/qrtree.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    QRTreeComponent
   ],
   imports: [
     BrowserModule,
