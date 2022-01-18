@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,10 +15,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 
+import { DataLoaderService } from '../services/data-loader.service';
+import { AppStore } from '../stores/app.store';
+import { QrListComponent } from '../components/qr-list/qr-list.component';
+import { SelectedQrComponent } from '../components/selected-qr/selected-qr.component';
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    QrListComponent,
+    SelectedQrComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +40,19 @@ import {MatInputModule} from '@angular/material/input';
     MatGridListModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: APP_INITIALIZER, useFactory: loadInitialData, deps: [DataLoaderService], multi: true },
+    DataLoaderService,
+    AppStore,
+    ...environment.providers,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function loadInitialData(dataLoader: DataLoaderService) {
+  return () => dataLoader.load();
+}
