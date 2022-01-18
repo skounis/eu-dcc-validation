@@ -14,12 +14,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { QRTreeComponent } from './qrtree/qrtree.component';
+import { DCCQRComponent } from './dccqr/dccqr.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    QRTreeComponent
+    QRTreeComponent,
+    DCCQRComponent
   ],
   imports: [
     BrowserModule,
