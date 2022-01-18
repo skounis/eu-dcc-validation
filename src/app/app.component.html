@@ -201,7 +201,7 @@
   }
 
   .terminal pre {
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
     color: white;
     padding: 0 1rem 1rem;
     margin: 0;
@@ -245,16 +245,16 @@
     align-items: center;
     font-size: 12px;
     padding: 3px 10px;
-    border: 1px solid rgba(27,31,35,.2);
+    border: 1px solid rgba(27, 31, 35, .2);
     border-radius: 3px;
-    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+    background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
     margin-left: 4px;
     font-weight: 600;
   }
 
   .github-star-badge:hover {
-    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
-    border-color: rgba(27,31,35,.35);
+    background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
+    border-color: rgba(27, 31, 35, .35);
     background-position: -.5em;
   }
 
@@ -274,7 +274,8 @@
 
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
-    .card-container > *:not(.circle-link) ,
+
+    .card-container>*:not(.circle-link),
     .terminal {
       width: 100%;
     }
@@ -301,64 +302,74 @@
     }
   }
 
-.example-spacer,
-.dcc-spacer  {
-  flex: 1 1 auto;
-}
-.dcc-container {
-  position: absolute;
-  top: 64px;
-  bottom: 64px;
-  left: 0;
-  right: 0;
-  background: #eee;
-}
-.dcc-sidenav {
-  min-width: 260px;
-}
-.dcc-qr-description {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-}
-.dcc-content-qr {
-  display: flex; 
-  flex-direction: row; 
-  flex-wrap: nowrap; 
-  justify-content: space-around; 
-  align-items: stretch
-}
+  .example-spacer,
+  .dcc-spacer {
+    flex: 1 1 auto;
+  }
 
-.dcc-content-qr > *{
-  flex-grow: 1;
-  flex-shrink: 1;
-  margin: 1em;
-  width: 100%;
-}
+  .dcc-container {
+    position: absolute;
+    top: 64px;
+    bottom: 64px;
+    left: 0;
+    right: 0;
+    background: #eee;
+  }
 
-.dcc-footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
+  .dcc-sidenav {
+    min-width: 260px;
+  }
+
+  .dcc-qr-description {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .dcc-content-qr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch
+  }
+
+  .dcc-content-qr>*,
+  .dcc-content-submit>* {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 1em;
+
+  }
+
+  .dcc-content-qr>* {
+    width: 100%;
+  }
+
+  .dcc-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 </style>
 
 <!-- Toolbar -->
 <div class="dcc-toolbar">
   <mat-toolbar color="primary">
-    <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-     <mat-icon>menu</mat-icon>
-   </button>
-   <span>EU DCC Validation</span>
-   <span class="example-spacer"></span>
-   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-     <mat-icon>favorite</mat-icon>
-   </button>
-   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
- </mat-toolbar>
+    <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
+      aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>EU DCC Validation</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
 </div>
 
 <div class="content" role="main">
@@ -377,56 +388,24 @@
       </div>
 
       <div class="dcc-content-submit">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>Results</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-   
-            <mat-form-field appearance="fill" style="width: 100%;">
-              <mat-label>Describe your details and submit your result.</mat-label>
-              <textarea matInput></textarea> 
-            </mat-form-field>
-           
-          </mat-card-content>
-          <mat-card-actions align="end">
-            <button mat-button><mat-icon>check_circle</mat-icon> Success</button>
-            <button mat-button color="accent"><mat-icon>report_problem</mat-icon> Warning</button>
-            <button mat-button color="warn"><mat-icon>error</mat-icon> Error</button>
-          </mat-card-actions>
-        </mat-card>
+        <app-test-result></app-test-result>
       </div>
-
-      <!-- <mat-grid-list cols="2" rowHeight="1:1" gutterSize gutterSize="2em" style="margin: 2em;">
-        <mat-grid-tile>
-        </mat-grid-tile>
-        <mat-grid-tile>
-        </mat-grid-tile>
-        <mat-grid-tile>3</mat-grid-tile>
-        <mat-grid-tile>4</mat-grid-tile>
-      </mat-grid-list> -->
     </div>
-  
+
   </mat-drawer-container>
 
   <!-- Footer -->
   <footer class="dcc-footer">
-      <mat-toolbar style="width: 100%;">
-       <span class="example-spacer"></span>
-       <button mat-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-toolbar style="width: 100%;">
+      <span class="example-spacer"></span>
+      <button mat-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>camera</mat-icon> Take a photo
       </button>
-      <button mat-button><mat-icon>code</mat-icon>Export</button>
-     </mat-toolbar>
+      <button mat-button>
+        <mat-icon>code</mat-icon>Export
+      </button>
+    </mat-toolbar>
   </footer>
 </div>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <router-outlet></router-outlet>

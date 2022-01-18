@@ -16,14 +16,16 @@ import { MatInputModule } from '@angular/material/input';
 import { QRTreeComponent } from './qrtree/qrtree.component';
 import { DCCQRComponent } from './dccqr/dccqr.component';
 import { DCCDescriptionComponent } from './dccdescription/dccdescription.component';
-
+import { TestResultComponent } from './test-result/test-result.component';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     QRTreeComponent,
     DCCQRComponent,
-    DCCDescriptionComponent
+    DCCDescriptionComponent,
+    TestResultComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { DCCDescriptionComponent } from './dccdescription/dccdescription.compone
     MatGridListModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
