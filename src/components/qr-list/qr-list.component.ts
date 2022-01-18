@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { IQrCode } from '../../interfaces/qr-code.interface';
 import { AppStore } from '../../stores/app.store';
