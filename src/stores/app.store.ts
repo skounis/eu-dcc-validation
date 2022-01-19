@@ -6,7 +6,7 @@ import { IQRCode, IScanResult } from '../interfaces/qr-code.interface';
 @Injectable()
 export class AppStore {
   
-  private results: IScanResult[];
+  private results: IScanResult[] = [];
   
   public data = new BehaviorSubject<IQRCode[]>([]);
   public selectedQr = new BehaviorSubject<IQRCode | null>(null);
