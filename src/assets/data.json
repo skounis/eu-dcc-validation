@@ -1,0 +1,17 @@
+[
+  {
+    "country": "EL",
+    "title": "Vaccination",
+    "qrcode": "https://raw.githubusercontent.com/eu-digital-green-certificates/dcc-quality-assurance/main/EL/1.3.0/VAC.png"
+  },
+  {
+    "country": "EL",
+    "title": "Recovery",
+    "qrcode": "https://raw.githubusercontent.com/eu-digital-green-certificates/dcc-quality-assurance/main/EL/1.3.0/VAC.png"
+  },
+  {
+    "country": "EL",
+    "title": "Test",
+    "qrcode": "https://raw.githubusercontent.com/eu-digital-green-certificates/dcc-quality-assurance/main/EL/1.3.0/VAC.png"
+  }
+]
