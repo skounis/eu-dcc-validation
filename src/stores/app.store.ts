@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { IQRCode, IScanResult } from '../interfaces/qr-code.interface';
+import { LocalStorageService } from '../services/local-storage.service';
 import { RepositoryContent } from '../interfaces/github.interface';
 
 import { GithubService } from '../services/github.service';
@@ -15,7 +16,7 @@ export class AppStore {
   public data = new BehaviorSubject<IQRCode[]>([]);
   public selectedQr = new BehaviorSubject<IQRCode | null>(null);
 
-  constructor(private github: GithubService) {
+  constructor(private localStorage: LocalStorageService, private github: GithubService) {
   }
 
   load() {
@@ -90,18 +91,17 @@ export class AppStore {
    * Capture the submitted results
    */
   capture(result: IScanResult) {
-    // TODO: Capture in local storage.
     console.log('Store: Capture the scan result: ', result)
     this.results.push(result);
-    this.serialize()
+    this.serialize();
   }
 
-  serialize() {
-    // TODO: Serialize this.results to local storage.
+  private serialize() {
+    this.localStorage.setItem(LocalStorageService.SCAN_RESULT_KEY, this.results);
   }
 
-  deserialize() {
-    // TODO: Deerialize this.results from local storage.
+  private deserialize() {
+    this.localStorage.removeItem(LocalStorageService.SCAN_RESULT_KEY);
   }
 
   /**
