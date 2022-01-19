@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { IQRCode, IScanResult } from '../interfaces/qr-code.interface';
+import { RepositoryContent } from '../interfaces/github.interface';
+
+import { GithubService } from '../services/github.service';
 
 @Injectable()
 export class AppStore {
-  
+
   private results: IScanResult[] = [];
-  
+
+  public raw: RepositoryContent | null = null;
   public data = new BehaviorSubject<IQRCode[]>([]);
   public selectedQr = new BehaviorSubject<IQRCode | null>(null);
 
-  constructor() {
+  constructor(private github: GithubService) {
   }
 
   load() {
@@ -25,8 +29,17 @@ export class AppStore {
     return this.data.value;
   }
 
-  setData(data: IQRCode[]) {
-    this.data.next(data);
+  setData(data: RepositoryContent) {
+    const COUNTRY = 0;
+    const VERSION = 1;
+    const FILE = 2;
+    this.raw = data;
+    const mapped = data.tree.map((i): IQRCode => {
+      const parts = i.path.split('/');
+      return { country: parts[COUNTRY], title: i.path, version: parts[VERSION], file: parts[FILE], qrcode: i.url }
+    });
+    this.data.next(mapped);
+    this.setSelectedQr(mapped[0])
   }
 
   flushData() {
@@ -38,7 +51,11 @@ export class AppStore {
   }
 
   setSelectedQr(value: IQRCode) {
-    this.selectedQr.next(value);
+    this.github.getImage(value.qrcode).subscribe((item: any) => {
+      value.qrcode64 = item;
+      this.selectedQr.next(value);
+    });
+
   }
 
   flushSelectedQr() {
@@ -49,16 +66,24 @@ export class AppStore {
    * Move the to previous item.
    */
   previous() {
-    // TODO: Pick previous and set it as selected
-    console.log('Store: move to previous.')
+    const index = this.index() - 1;
+    if (index >= 0) {
+      this.setSelectedQr(this.data.value[index]);
+    } else {
+      console.warn('Store: Start of the array reached.')
+    }
   }
 
   /**
    * Move the to next item.
    */
   next() {
-    // TODO: Pick next and set it as selected
-    console.log('Store: move to next.')
+    const index = this.index() + 1;
+    if (index < this.data.value.length) {
+      this.setSelectedQr(this.data.value[index]);
+    } else {
+      console.warn('Store: End of the array reached.')
+    }
   }
 
   /**
@@ -74,8 +99,18 @@ export class AppStore {
   serialize() {
     // TODO: Serialize this.results to local storage.
   }
-  
+
   deserialize() {
     // TODO: Deerialize this.results from local storage.
+  }
+
+  /**
+   * The current index
+   */
+  private index() {
+    const index = this.data.value.findIndex(i => {
+      return i.title === this.selectedQr.value?.title
+    })
+    return index;
   }
 }

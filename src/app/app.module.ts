@@ -23,6 +23,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { QrListComponent } from '../components/qr-list/qr-list.component';
 import { QRTreeComponent } from '../components/qrtree/qrtree.component';
 import { TestResultComponent } from '../components/test-result/test-result.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { TestResultComponent } from '../components/test-result/test-result.compo
     MatInputModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatTreeModule
+    MatTreeModule,
+    MatExpansionModule
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: loadInitialData, deps: [DataLoaderService], multi: true },

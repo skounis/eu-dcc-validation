@@ -3,14 +3,18 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../environments/environment';
 
+import { GithubService } from './github.service';
+import { RepositoryContent } from '../interfaces/github.interface';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private github: GithubService) { }
 
-  getData() {
-    return this.http.get(environment.api.base + 'data');
+  getData(): Observable<RepositoryContent> {
+    return this.github.getTree();
   }
 }
