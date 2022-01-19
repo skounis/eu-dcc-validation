@@ -22,7 +22,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { QrListComponent } from '../components/qr-list/qr-list.component';
 import { QRTreeComponent } from '../components/qrtree/qrtree.component';
-import { SelectedQrComponent } from '../components/selected-qr/selected-qr.component';
 import { TestResultComponent } from '../components/test-result/test-result.component';
 
 @NgModule({
@@ -32,7 +31,6 @@ import { TestResultComponent } from '../components/test-result/test-result.compo
     DCCQRComponent,
     QrListComponent,
     QRTreeComponent,
-    SelectedQrComponent,
     TestResultComponent
   ],
   imports: [
