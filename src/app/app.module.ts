@@ -13,6 +13,12 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { QRTreeComponent } from './qrtree/qrtree.component';
+import { DCCQRComponent } from './dccqr/dccqr.component';
+import { DCCDescriptionComponent } from './dccdescription/dccdescription.component';
+import { TestResultComponent } from './test-result/test-result.component';
+import { FormsModule }   from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 
 import { DataLoaderService } from '../services/data-loader.service';
@@ -21,10 +27,13 @@ import { QrListComponent } from '../components/qr-list/qr-list.component';
 import { SelectedQrComponent } from '../components/selected-qr/selected-qr.component';
 import { environment } from '../environments/environment';
 
-
 @NgModule({
   declarations: [
     AppComponent,
+    QRTreeComponent,
+    DCCQRComponent,
+    DCCDescriptionComponent,
+    TestResultComponent
     QrListComponent,
     SelectedQrComponent
   ],
@@ -41,6 +50,7 @@ import { environment } from '../environments/environment';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    FormsModule
     HttpClientModule
   ],
   providers: [
