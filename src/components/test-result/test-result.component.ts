@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IQRCode } from '../../interfaces/qr-code.interface';
+import { AppStore } from '../../stores/app.store';
 
 @Component({
   selector: 'app-test-result',
@@ -8,7 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class TestResultComponent implements OnInit {
 
   model = { reason: '' }
-  constructor() { }
+  item: IQRCode|null;
+
+  constructor(private store: AppStore) {
+    this.item = null;
+    this.store.selectedQr.subscribe((selectedQr: IQRCode|null)  => {
+      this.item = selectedQr;
+      console.log('TestResultComponent: Selected: ', this.item)
+    });
+  }
 
   ngOnInit(): void {
   }
