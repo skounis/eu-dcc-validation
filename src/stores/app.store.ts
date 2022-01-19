@@ -5,7 +5,9 @@ import { IQRCode, IScanResult } from '../interfaces/qr-code.interface';
 
 @Injectable()
 export class AppStore {
-
+  
+  private results: IScanResult[];
+  
   public data = new BehaviorSubject<IQRCode[]>([]);
   public selectedQr = new BehaviorSubject<IQRCode | null>(null);
 
@@ -65,6 +67,15 @@ export class AppStore {
   capture(result: IScanResult) {
     // TODO: Capture in local storage.
     console.log('Store: Capture the scan result: ', result)
+    this.results.push(result);
+    this.serialize()
   }
 
+  serialize() {
+    // TODO: Serialize this.results to local storage.
+  }
+  
+  deserialize() {
+    // TODO: Deerialize this.results from local storage.
+  }
 }
