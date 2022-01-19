@@ -7,8 +7,11 @@ export enum ScanResultEnum {
 
 export interface IQRCode {
   country: string;
+  version: string;
+  file: string;
   title: string;
   qrcode: string;
+  qrcode64?: string;
 }
 
 /**

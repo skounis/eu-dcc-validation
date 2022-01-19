@@ -1,24 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import * as _ from 'lodash';
+import { AppStore } from '../../stores/app.store';
 
 // TODO: Move the interface into a common place.
-import { QRNode, FlatNode } from '../../app/app.component'
-
-const TREE_DATA: QRNode[] = [
-  {
-    name: 'Greece',
-    children: [{ name: 'QR01 - Vaccination ' }, { name: 'QR-02 - Test' }, { name: 'QR-03 - Recovery' }],
-  },
-  {
-    name: 'The Netherlands',
-    children: [{ name: 'QR01 - Vaccination ' }, { name: 'QR-02 - Test' }, { name: 'QR-03 - Recovery' }],
-  },
-  {
-    name: 'Germany',
-    children: [{ name: 'QR01 - Vaccination ' }, { name: 'QR-02 - Test' }, { name: 'QR-03 - Recovery' }],
-  },
-];
+import { TreeNode, FlatNode } from '../../interfaces/tree.interface'
+import { IQRCode } from 'src/interfaces/qr-code.interface';
 
 @Component({
   selector: 'app-qrtree',
@@ -27,17 +15,26 @@ const TREE_DATA: QRNode[] = [
 })
 export class QRTreeComponent implements OnInit {
 
-  constructor() {
-    this.dataSource.data = TREE_DATA;
+  constructor(private store: AppStore) {
+    let data = this._group(this.store.data.value);
+    this.dataSource.data = data;
   }
 
   ngOnInit(): void {
   }
 
-  private _transformer = (node: QRNode, level: number) => {
+  private _group(data: IQRCode[]) {
+    let grouped = _.groupBy(data, 'country');
+    let nodes: any = Object.keys(grouped).map((key, index) => {
+      return { title: key, children: grouped[key], value: 'FF' }
+    });
+    return nodes;
+  }
+
+  private _transformer = (node: TreeNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
-      name: node.name,
+      title: node.title,
       level: level,
     };
   };
@@ -57,4 +54,13 @@ export class QRTreeComponent implements OnInit {
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
   hasChild = (_: number, node: FlatNode) => node.expandable;
+
+  public select(item: any) {
+    const qr = this.store.getData().find(i => {
+      return i.title === item.title;
+    });
+    if (!!qr) {
+      this.store.setSelectedQr(qr);
+    }
+  }
 }
