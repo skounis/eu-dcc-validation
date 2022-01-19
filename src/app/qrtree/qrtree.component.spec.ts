@@ -8,9 +8,9 @@ describe('QRTreeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QRTreeComponent ]
+      declarations: [QRTreeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

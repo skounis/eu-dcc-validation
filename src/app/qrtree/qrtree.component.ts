@@ -27,7 +27,7 @@ const TREE_DATA: QRNode[] = [
 })
 export class QRTreeComponent implements OnInit {
 
-  constructor() { 
+  constructor() {
     this.dataSource.data = TREE_DATA;
   }
 

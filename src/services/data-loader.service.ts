@@ -7,24 +7,24 @@ import { CrudService } from '../services/crud.service';
 export class DataLoaderService {
 
   constructor(private store: AppStore,
-              private crud: CrudService) {
+    private crud: CrudService) {
 
   }
 
   load(): Promise<any> {
     return new Promise<void>((resolve, reject) => {
       this.crud.getData()
-      .subscribe({
-        next: (res: any) => {
-          console.log('Response of getting the data:', res);
-          this.store.setData(res);
-          resolve();
-        },
-        error: (err) => {
-          console.log('Error while getting the data: ', err);
-          reject();
-        }
-      });
+        .subscribe({
+          next: (res: any) => {
+            console.log('Response of getting the data:', res);
+            this.store.setData(res);
+            resolve();
+          },
+          error: (err) => {
+            console.log('Error while getting the data: ', err);
+            reject();
+          }
+        });
     });
   }
 }

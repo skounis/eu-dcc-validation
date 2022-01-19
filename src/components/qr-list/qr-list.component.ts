@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { IQrCode } from '../../interfaces/qr-code.interface';
+import { IQRCode } from '../../interfaces/qr-code.interface';
 import { AppStore } from '../../stores/app.store';
 
 @Component({
@@ -10,16 +10,16 @@ import { AppStore } from '../../stores/app.store';
 
 export class QrListComponent {
 
-  data: IQrCode[];
+  data: IQRCode[];
 
   constructor(private store: AppStore) {
     this.data = [];
-    this.store.data.subscribe((data: IQrCode[])  => {
+    this.store.data.subscribe((data: IQRCode[])  => {
       this.data = data;
     });
   }
 
-  public selectQr(item: IQrCode) {
+  public selectQr(item: IQRCode) {
     this.store.setSelectedQr(item);
   }
 }

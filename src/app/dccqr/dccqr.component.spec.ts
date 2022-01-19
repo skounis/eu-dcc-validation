@@ -8,9 +8,9 @@ describe('DCCQRComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DCCQRComponent ]
+      declarations: [DCCQRComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

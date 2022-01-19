@@ -9,9 +9,9 @@ export class MockDataInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (request.url.match('/data') && request.method === 'GET') {
-          request = request.clone({
-            url: '../assets/data.json'
-          });
+      request = request.clone({
+        url: '../assets/data.json'
+      });
     }
 
     return next.handle(request);

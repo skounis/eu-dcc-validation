@@ -1,4 +1,4 @@
-export interface IQrCode {
+export interface IQRCode {
   country: string;
   title: string;
   qrcode: string;

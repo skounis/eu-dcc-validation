@@ -1,57 +1,55 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppStore } from '../stores/app.store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import { DataLoaderService } from '../services/data-loader.service';
+import { DCCDescriptionComponent } from './dccdescription/dccdescription.component';
+import { DCCQRComponent } from './dccqr/dccqr.component';
+import { environment } from '../environments/environment';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatTreeModule } from '@angular/material/tree';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { QRTreeComponent } from './qrtree/qrtree.component';
-import { DCCQRComponent } from './dccqr/dccqr.component';
-import { DCCDescriptionComponent } from './dccdescription/dccdescription.component';
-import { TestResultComponent } from './test-result/test-result.component';
-import { FormsModule }   from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-
-import { DataLoaderService } from '../services/data-loader.service';
-import { AppStore } from '../stores/app.store';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTreeModule } from '@angular/material/tree';
 import { QrListComponent } from '../components/qr-list/qr-list.component';
+import { QRTreeComponent } from './qrtree/qrtree.component';
 import { SelectedQrComponent } from '../components/selected-qr/selected-qr.component';
-import { environment } from '../environments/environment';
+import { TestResultComponent } from './test-result/test-result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QRTreeComponent,
-    DCCQRComponent,
     DCCDescriptionComponent,
-    TestResultComponent
+    DCCQRComponent,
     QrListComponent,
-    SelectedQrComponent
+    QRTreeComponent,
+    SelectedQrComponent,
+    TestResultComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule,
-    MatToolbarModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
     MatButtonModule,
-    MatSidenavModule,
-    MatTreeModule,
-    MatGridListModule,
     MatCardModule,
     MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
     MatInputModule,
-    FormsModule
-    HttpClientModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatTreeModule
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: loadInitialData, deps: [DataLoaderService], multi: true },
