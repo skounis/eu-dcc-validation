@@ -11,11 +11,16 @@ export class LocalStorageService {
 
   getItem(key: string): any {
     const json = localStorage.getItem(key);
-    return json ? JSON.parse(json) : null;
+    try {
+      return json ? JSON.parse(json) : null;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 
   setItem(key: string, value: any): void {
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(key, JSON.stringify(value, null, 2));
   }
 
   removeItem(key: string) {
