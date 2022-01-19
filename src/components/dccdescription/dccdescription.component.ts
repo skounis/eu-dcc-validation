@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { QRNode, FlatNode } from '../../app/app.component'
+import { IQRCode } from '../../interfaces/qr-code.interface';
+import { AppStore } from '../../stores/app.store';
 
 // Sample
 // https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/release/1.3.0/examples/vaccination/simple.json
@@ -43,9 +45,16 @@ const DCC_DATA: QRNode[] = [
   styleUrls: ['./dccdescription.component.css']
 })
 export class DCCDescriptionComponent implements OnInit {
+  
+  item: IQRCode|null;
 
-  constructor() {
+  constructor(private store: AppStore) {
     this.dataSource2.data = DCC_DATA;
+    this.item = null;
+    this.store.selectedQr.subscribe((selectedQr: IQRCode|null)  => {
+      this.item = selectedQr;
+      console.log('DCCDescriptionComponent: Selected: ', this.item)
+    });
   }
 
   ngOnInit(): void {
