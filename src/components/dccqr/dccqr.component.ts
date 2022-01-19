@@ -9,11 +9,11 @@ import { AppStore } from '../../stores/app.store';
 })
 export class DCCQRComponent implements OnInit {
 
-  item: IQRCode|null;
+  item: IQRCode | null;
 
   constructor(private store: AppStore) {
     this.item = null;
-    this.store.selectedQr.subscribe((selectedQr: IQRCode|null)  => {
+    this.store.selectedQr.subscribe((selectedQr: IQRCode | null) => {
       this.item = selectedQr;
       console.log('DCCQRComponent: Selected: ', this.item)
     });
@@ -23,11 +23,13 @@ export class DCCQRComponent implements OnInit {
   }
 
   previous() {
-    console.log('Display the previous QR code.')
+    console.log('DCCQRComponent: Display the previous QR code.')
+    this.store.previous();
   }
 
   next() {
-    console.log('Display the next QR code.')
+    console.log('DCCQRComponent: Display the next QR code.')
+    this.store.next();
   }
 
 }

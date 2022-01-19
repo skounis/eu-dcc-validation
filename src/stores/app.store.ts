@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { IQRCode as IQRCode } from '../interfaces/qr-code.interface';
+import { IQRCode, IScanResult } from '../interfaces/qr-code.interface';
 
 @Injectable()
 export class AppStore {
@@ -42,4 +42,29 @@ export class AppStore {
   flushSelectedQr() {
     this.selectedQr.next(null);
   }
+
+  /**
+   * Move the to previous item.
+   */
+  previous() {
+    // TODO: Pick previous and set it as selected
+    console.log('Store: move to previous.')
+  }
+
+  /**
+   * Move the to next item.
+   */
+  next() {
+    // TODO: Pick next and set it as selected
+    console.log('Store: move to next.')
+  }
+
+  /**
+   * Capture the submitted results
+   */
+  capture(result: IScanResult) {
+    // TODO: Capture in local storage.
+    console.log('Store: Capture the scan result: ', result)
+  }
+
 }
