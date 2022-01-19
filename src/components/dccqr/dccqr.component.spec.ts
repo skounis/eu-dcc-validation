@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestResultComponent } from './test-result.component';
+import { DCCQRComponent } from './dccqr.component';
 
-describe('TestResultComponent', () => {
-  let component: TestResultComponent;
-  let fixture: ComponentFixture<TestResultComponent>;
+describe('DCCQRComponent', () => {
+  let component: DCCQRComponent;
+  let fixture: ComponentFixture<DCCQRComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TestResultComponent ]
+      declarations: [DCCQRComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestResultComponent);
+    fixture = TestBed.createComponent(DCCQRComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

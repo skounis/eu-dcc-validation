@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { QRNode, FlatNode } from '../app.component'
+import { QRNode, FlatNode } from '../../app/app.component'
 
 // Sample
 // https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/release/1.3.0/examples/vaccination/simple.json

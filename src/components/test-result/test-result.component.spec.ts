@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QRTreeComponent } from './qrtree.component';
+import { TestResultComponent } from './test-result.component';
 
-describe('QRTreeComponent', () => {
-  let component: QRTreeComponent;
-  let fixture: ComponentFixture<QRTreeComponent>;
+describe('TestResultComponent', () => {
+  let component: TestResultComponent;
+  let fixture: ComponentFixture<TestResultComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QRTreeComponent ]
+      declarations: [TestResultComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QRTreeComponent);
+    fixture = TestBed.createComponent(TestResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

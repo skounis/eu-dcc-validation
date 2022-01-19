@@ -3,7 +3,7 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 
 // TODO: Move the interface into a common place.
-import { QRNode, FlatNode } from '../app.component'
+import { QRNode, FlatNode } from '../../app/app.component'
 
 const TREE_DATA: QRNode[] = [
   {
@@ -27,7 +27,7 @@ const TREE_DATA: QRNode[] = [
 })
 export class QRTreeComponent implements OnInit {
 
-  constructor() { 
+  constructor() {
     this.dataSource.data = TREE_DATA;
   }
 

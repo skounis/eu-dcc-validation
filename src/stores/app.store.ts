@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { IQrCode } from '../interfaces/qr-code.interface';
+import { IQRCode as IQRCode } from '../interfaces/qr-code.interface';
 
 @Injectable()
 export class AppStore {
 
-  public data = new BehaviorSubject<IQrCode[]>([]);
-  public selectedQr = new BehaviorSubject<IQrCode|null>(null);
+  public data = new BehaviorSubject<IQRCode[]>([]);
+  public selectedQr = new BehaviorSubject<IQRCode | null>(null);
 
   constructor() {
   }
@@ -19,11 +19,11 @@ export class AppStore {
     // returned data.
   }
 
-  getData(): IQrCode[] {
+  getData(): IQRCode[] {
     return this.data.value;
   }
 
-  setData(data: IQrCode[]) {
+  setData(data: IQRCode[]) {
     this.data.next(data);
   }
 
@@ -31,11 +31,11 @@ export class AppStore {
     this.data.next([]);
   }
 
-  getSelectedQr(): IQrCode | null {
+  getSelectedQr(): IQRCode | null {
     return this.selectedQr.value;
   }
 
-  setSelectedQr(value: IQrCode) {
+  setSelectedQr(value: IQRCode) {
     this.selectedQr.next(value);
   }
 
