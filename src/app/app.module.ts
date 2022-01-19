@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,13 @@ import { DCCQRComponent } from './dccqr/dccqr.component';
 import { DCCDescriptionComponent } from './dccdescription/dccdescription.component';
 import { TestResultComponent } from './test-result/test-result.component';
 import { FormsModule }   from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+
+import { DataLoaderService } from '../services/data-loader.service';
+import { AppStore } from '../stores/app.store';
+import { QrListComponent } from '../components/qr-list/qr-list.component';
+import { SelectedQrComponent } from '../components/selected-qr/selected-qr.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,6 +34,8 @@ import { FormsModule }   from '@angular/forms';
     DCCQRComponent,
     DCCDescriptionComponent,
     TestResultComponent
+    QrListComponent,
+    SelectedQrComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +51,18 @@ import { FormsModule }   from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     FormsModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: APP_INITIALIZER, useFactory: loadInitialData, deps: [DataLoaderService], multi: true },
+    DataLoaderService,
+    AppStore,
+    ...environment.providers,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function loadInitialData(dataLoader: DataLoaderService) {
+  return () => dataLoader.load();
+}

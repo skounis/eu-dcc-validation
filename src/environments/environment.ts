@@ -1,9 +1,18 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MockDataInterceptor } from '../interceptors/mock-data.interceptor';
 
 export const environment = {
-  production: false
+  production: false,
+  api: {
+    base: 'https://some-domain.com/'
+  },
+  providers: [
+    // Provider for mock data
+    { provide: HTTP_INTERCEPTORS, useClass: MockDataInterceptor, multi: true }
+  ]
 };
 
 /*
