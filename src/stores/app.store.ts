@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
+import * as _ from 'lodash';
 import { IQRCode, IScanResult } from '../interfaces/qr-code.interface';
 import { LocalStorageService } from '../services/local-storage.service';
 import { RepositoryContent } from '../interfaces/github.interface';
@@ -37,7 +37,7 @@ export class AppStore {
     this.raw = data;
     const mapped = data.tree.map((i): IQRCode => {
       const parts = i.path.split('/');
-      return { country: parts[COUNTRY], title: i.path, version: parts[VERSION], file: parts[FILE], qrcode: i.url }
+      return { id: i.path, country: parts[COUNTRY], title: i.path, version: parts[VERSION], file: parts[FILE], qrcode: i.url }
     });
     this.data.next(mapped);
     this.setSelectedQr(mapped[0])
@@ -92,16 +92,31 @@ export class AppStore {
    */
   capture(result: IScanResult) {
     console.log('Store: Capture the scan result: ', result)
+    _.remove(this.results, (e) => {
+      return e.ref == result.ref;
+    });
     this.results.push(result);
     this.serialize();
   }
 
-  private serialize() {
+  /**
+   * Store the results
+   */
+   public serialize() {
     this.localStorage.setItem(LocalStorageService.SCAN_RESULT_KEY, this.results);
   }
-
-  private deserialize() {
+  /**
+   * Clear the results
+   */
+   public clear() {
     this.localStorage.removeItem(LocalStorageService.SCAN_RESULT_KEY);
+  }
+
+  /**
+   * Load the results
+   */
+  public deserialize():any {
+    return this.localStorage.getItem(LocalStorageService.SCAN_RESULT_KEY);
   }
 
   /**

@@ -6,6 +6,7 @@ export enum ScanResultEnum {
 }
 
 export interface IQRCode {
+  id: string;
   country: string;
   version: string;
   file: string;
@@ -19,6 +20,7 @@ export interface IQRCode {
  * The structure for reporting the scan result
  */
 export interface IScanResult {
+  ref: string;
   result: ScanResultEnum;
   comments: string;
   image: string; // URL or base64

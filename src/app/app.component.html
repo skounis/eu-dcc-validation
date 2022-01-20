@@ -403,9 +403,10 @@
       <button mat-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>camera</mat-icon> Take a photo
       </button>
-      <button mat-button>
+      <button mat-button (click)="export()" [disabled]="!!downloadJsonHref">
         <mat-icon>code</mat-icon>Export
       </button>
+      <a *ngIf="!!downloadJsonHref" mat-flat-button  title="Download JSON" [href]="downloadJsonHref" download="test-results.json" (click)="clear()">Download</a>
     </mat-toolbar>
   </footer>
 </div>
