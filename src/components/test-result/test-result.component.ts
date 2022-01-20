@@ -39,6 +39,12 @@ export class TestResultComponent implements OnInit {
   }
 
   report(result: ScanResultEnum) {
-    this.store.capture({ result: result, comments: this.model.reason, image: '' })
+    const id = this.store.selectedQr.value?.id
+    if (!!id) {
+      this.store.capture({ ref: id, result: result, comments: this.model.reason, image: '' })
+    } else {
+      // TODO: Handle error.
+      console.error('No QRcode selected.');
+    }
   }
 }
