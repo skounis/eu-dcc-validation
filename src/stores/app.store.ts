@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import * as _ from 'lodash';
-import { IQRCode, IScanResult } from '../interfaces/qr-code.interface';
+import { IQRCode } from '../interfaces/qr-code.interface';
+import { TestResult, ITestResultEntry } from '../interfaces/model.interface';
 import { LocalStorageService } from '../services/local-storage.service';
 import { RepositoryContent } from '../interfaces/github.interface';
 
@@ -10,8 +11,7 @@ import { GithubService } from '../services/github.service';
 @Injectable()
 export class AppStore {
 
-  private results: IScanResult[] = [];
-
+  private results = new TestResult();
   public raw: RepositoryContent | null = null;
   public data = new BehaviorSubject<IQRCode[]>([]);
   public selectedQr = new BehaviorSubject<IQRCode | null>(null);
@@ -59,15 +59,25 @@ export class AppStore {
 
   }
 
+  /**
+   * Get the last message broadcasted.
+   */
   getMessage() {
     this.message.value;
   }
 
+  /**
+   * Broadcast a message
+   * @param value The message
+   */
   setMessage(value: string) {
     this.message.next(value);
   }
 
-
+  /**
+   * Flush the selected/current QR code
+   * // TODO: Review again
+   */
   flushSelectedQr() {
     this.selectedQr.next(null);
   }
@@ -99,37 +109,34 @@ export class AppStore {
   /**
    * Capture the submitted results
    */
-  capture(result: IScanResult) {
+  capture(result: ITestResultEntry) {
     console.log('Store: Capture the scan result: ', result)
-    _.remove(this.results, (e) => {
-      return e.ref == result.ref;
-    });
-    this.results.push(result);
+    this.results.addEntry(result)
     this.serialize();
   }
 
   /**
    * Store the results
    */
-   public serialize() {
+  public serialize() {
     this.localStorage.setItem(LocalStorageService.SCAN_RESULT_KEY, this.results);
   }
   /**
    * Clear the results
    */
-   public clear() {
+  public clear() {
     this.localStorage.removeItem(LocalStorageService.SCAN_RESULT_KEY);
   }
 
   /**
    * Load the results
    */
-  public deserialize():any {
+  public deserialize(): any {
     return this.localStorage.getItem(LocalStorageService.SCAN_RESULT_KEY);
   }
 
   /**
-   * The current index
+   * The current index of the selected QR code
    */
   private index() {
     const index = this.data.value.findIndex(i => {

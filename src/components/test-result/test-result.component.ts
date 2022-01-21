@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IQRCode, IScanResult, ScanResultEnum } from '../../interfaces/qr-code.interface';
+import { IQRCode } from '../../interfaces/qr-code.interface';
+import { TestResult, PlatformEnum, TestResultEnum, ITestResultEntry } from '../../interfaces/model.interface';
 import { AppStore } from '../../stores/app.store';
 
 @Component({
@@ -23,25 +24,25 @@ export class TestResultComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  success(): void {
+  valid(): void {
     console.log('Log success.')
-    this.report(ScanResultEnum.Success)
+    this.report(TestResultEnum.Valid)
   }
 
-  warning(): void {
+  invalid(): void {
     console.log('Log warning.', this.model)
-    this.report(ScanResultEnum.Warning)
+    this.report(TestResultEnum.Invalid)
   }
 
   error(): void {
     console.log('Log error.', this.model)
-    this.report(ScanResultEnum.Error)
+    this.report(TestResultEnum.Error)
   }
 
-  report(result: ScanResultEnum) {
+  report(result: TestResultEnum) {
     const id = this.store.selectedQr.value?.id
     if (!!id) {
-      this.store.capture({ ref: id, result: result, comments: this.model.reason, image: '' })
+      this.store.capture({ file: id, result: result, comment: this.model.reason,})
       this.broadcast();
       this.cleanup();
     } else {
