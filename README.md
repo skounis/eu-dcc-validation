@@ -36,17 +36,32 @@ The creation of a Validation Portal is suggested which will:
 ### Result format
 Test results are provided one json file per platform.
 ```
-[{
-	"file": "NL/1.3.0/REC.png",		
-	"result": "Valid|Invalid|Error",
-	"comment": "Free text"
-},{
-	"file": "NL/1.3.0/REC.png",		
-	"result": "Valid|Invalid|Error",
-	"comment": "Free text"	
-}]
+{
+	metadata: {
+		country: "XX",
+		date-completed: "20220120T102611Z",
+		commit-tested: "4699f4b13a1010d10d9c4f80eac59beec5cbb613",
+		platform-tested: "IOS|ANDROID"
+	},
+	results: [{
+		"file": "NL/1.3.0/REC.png",		
+		"result": "Valid|Invalid|Error",
+		"comment": "Free text"
+	},{
+		"file": "NL/1.3.0/REC.png",		
+		"result": "Valid|Invalid|Error",
+		"comment": "Free text"	
+	}]
+}
 ```
 
+* `metadata`: contains various metadata.
+* ``: country code, iso-two-letter code
+* ``: date the test was completed, in ISO8601 UTC
+* ``: git hash of the commit tested
+* ``: platform the tests were done on
+
+* `results`: contains an array of results, one per file
 * `file`: the relative path to the test file from the root of the QA repository. this path is returned by the github API if you use that.
 * `result`: the test result, `Valid` for valid, `Invalid` if the DCC was scanned but deemed invalid, `Error` if the DCC did not scan.
 * `comment`: optional free text explaining the result if it isn't `Valid`
