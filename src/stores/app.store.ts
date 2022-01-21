@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import * as _ from 'lodash';
-import { IQRCode } from '../interfaces/qr-code.interface';
-import { TestResult, ITestResultEntry } from '../interfaces/model.interface';
+import { IQRCode, TestResult, ITestResultEntry } from '../interfaces/model.interface';
 import { LocalStorageService } from '../services/local-storage.service';
 import { RepositoryContent } from '../interfaces/github.interface';
 
@@ -37,7 +36,7 @@ export class AppStore {
     this.raw = data;
     const mapped = data.tree.map((i): IQRCode => {
       const parts = i.path.split('/');
-      return { id: i.path, country: parts[COUNTRY], title: i.path, version: parts[VERSION], file: parts[FILE], qrcode: i.url }
+      return { id: i.path, country: parts[COUNTRY], title: i.path, version: parts[VERSION], file: parts[FILE], uri: i.url }
     });
     this.data.next(mapped);
     this.setSelectedQr(mapped[0])
@@ -52,7 +51,7 @@ export class AppStore {
   }
 
   setSelectedQr(value: IQRCode) {
-    this.github.getImage(value.qrcode).subscribe((item: any) => {
+    this.github.getImage(value.uri).subscribe((item: any) => {
       value.qrcode64 = item;
       this.selectedQr.next(value);
     });

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IQRCode } from '../../interfaces/qr-code.interface';
+import { IQRCode  } from '../../interfaces/model.interface';
 import { AppStore } from '../../stores/app.store';
 
 @Component({

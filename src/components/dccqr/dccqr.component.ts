@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { IQRCode } from '../../interfaces/qr-code.interface';
+import { IQRCode  } from '../../interfaces/model.interface';
 import { AppStore } from '../../stores/app.store';
 
 @Component({

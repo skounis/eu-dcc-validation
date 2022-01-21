@@ -104,3 +104,23 @@ export class TestResultMetadata implements ITestResultMetadata {
     this.platform = platform || PlatformEnum.Android
   }
 }
+
+/**
+ * The Rich representation of an EU DCC
+ */
+ export interface IQRCode {
+  /** Unique ID (is the same with the file) */
+  id: string;
+  /** The country issued this DCC. */
+  country: string;
+  /** The version of the specifications the DCC complies with. */
+  version: string;
+  /** The relative path to the test file from the root of the QA repository */
+  file: string;
+  /** A friendly title for this DCC */
+  title: string;
+  /** URI for loading the QR Code. */
+  uri: string;
+  /** The base64 representation of the QR Code. */
+  qrcode64?: string;
+}

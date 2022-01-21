@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { TreeNode, FlatNode } from '../../interfaces/tree.interface'
-import { IQRCode } from '../../interfaces/qr-code.interface';
+import { IQRCode  } from '../../interfaces/model.interface';
 import { AppStore } from '../../stores/app.store';
 
 // Sample
