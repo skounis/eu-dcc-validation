@@ -30,6 +30,10 @@ export class AppComponent {
     this.open('Export is ready for download.', 'Close');
   }
 
+  upload() {
+    this.store.setMessage('Not implemented!')
+  }
+
   clear() {
     setTimeout(() => { this.downloadJsonHref = null }, 2000);
   }
