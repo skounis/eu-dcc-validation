@@ -1,80 +1,180 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "http://example.com/example.json",
-    "type": "array",
-    "title": "EU DCC Validation Results",
-    "description": "The JSON document for collecting the DCC validation results",
-    "default": [],
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
     "examples": [
-        [
-            {
-                "file": "NL/1.3.0/REC.png",
-                "result": "Valid|Invalid|Error",
-                "comment": "Free text"
+        {
+            "metadata": {
+                "country": "XX",
+                "dateCompleted": "20220120T102611Z",
+                "commit": "4699f4b13a1010d10d9c4f80eac59beec5cbb613",
+                "platform": "IOS|ANDROID"
             },
-            {
-                "file": "NL/1.3.0/REC.png",
-                "result": "Valid|Invalid|Error",
-                "comment": "Free text"
-            }
-        ]
+            "results": [
+                {
+                    "file": "NL/1.3.0/REC.png",
+                    "result": "Valid|Invalid|Error",
+                    "comment": "Free text"
+                },
+                {
+                    "file": "NL/1.3.0/REC.png",
+                    "result": "Valid|Invalid|Error",
+                    "comment": "Free text"
+                }
+            ]
+        }
     ],
-    "additionalItems": true,
-    "items": {
-        "$id": "#/items",
-        "anyOf": [
-            {
-                "$id": "#/items/anyOf/0",
-                "type": "object",
-                "title": "The first anyOf schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": {},
-                "examples": [
+    "required": [
+        "metadata",
+        "results"
+    ],
+    "properties": {
+        "metadata": {
+            "$id": "#/properties/metadata",
+            "type": "object",
+            "title": "The metadata schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "country": "XX",
+                    "dateCompleted": "20220120T102611Z",
+                    "commit": "4699f4b13a1010d10d9c4f80eac59beec5cbb613",
+                    "platform": "IOS|ANDROID"
+                }
+            ],
+            "required": [
+                "country",
+                "dateCompleted",
+                "commit",
+                "platform"
+            ],
+            "properties": {
+                "country": {
+                    "$id": "#/properties/metadata/properties/country",
+                    "type": "string",
+                    "title": "The country schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "XX"
+                    ]
+                },
+                "dateCompleted": {
+                    "$id": "#/properties/metadata/properties/dateCompleted",
+                    "type": "string",
+                    "title": "The dateCompleted schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "20220120T102611Z"
+                    ]
+                },
+                "commit": {
+                    "$id": "#/properties/metadata/properties/commit",
+                    "type": "string",
+                    "title": "The commit schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "4699f4b13a1010d10d9c4f80eac59beec5cbb613"
+                    ]
+                },
+                "platform": {
+                    "$id": "#/properties/metadata/properties/platform",
+                    "type": "string",
+                    "title": "The platform schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "IOS|ANDROID"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        },
+        "results": {
+            "$id": "#/properties/results",
+            "type": "array",
+            "title": "The results schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "file": "NL/1.3.0/REC.png",
+                        "result": "Valid|Invalid|Error",
+                        "comment": "Free text"
+                    },
                     {
                         "file": "NL/1.3.0/REC.png",
                         "result": "Valid|Invalid|Error",
                         "comment": "Free text"
                     }
-                ],
-                "required": [
-                    "file",
-                    "result",
-                    "comment"
-                ],
-                "properties": {
-                    "file": {
-                        "$id": "#/items/anyOf/0/properties/file",
-                        "default": "",
-                        "description": "The relative path to the test file from the root of the QA repository. This path is returned by the github API if you use that.",
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/results/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/results/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
                         "examples": [
-                            "NL/1.3.0/REC.png"
+                            {
+                                "file": "NL/1.3.0/REC.png",
+                                "result": "Valid|Invalid|Error",
+                                "comment": "Free text"
+                            }
                         ],
-                        "title": "The test file file",
-                        "type": "string"
-                    },
-                    "result": {
-                        "$id": "#/items/anyOf/0/properties/result",
-                        "default": "",
-                        "description": "The test result, Valid for valid, Invalid if the DCC was scanned but deemed invalid, Error if the DCC did not scan.",
-                        "examples": [
-                            "Valid|Invalid|Error"
+                        "required": [
+                            "file",
+                            "result",
+                            "comment"
                         ],
-                        "title": "The test result",
-                        "type": "string"
-                    },
-                    "comment": {
-                        "$id": "#/items/anyOf/0/properties/comment",
-                        "default": "",
-                        "description": "Optional free text explaining the result if it isn't Valid.",
-                        "examples": [
-                            "Free text"
-                        ],
-                        "title": "The comments",
-                        "type": "string"
+                        "properties": {
+                            "file": {
+                                "$id": "#/properties/results/items/anyOf/0/properties/file",
+                                "type": "string",
+                                "title": "The file schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "NL/1.3.0/REC.png"
+                                ]
+                            },
+                            "result": {
+                                "$id": "#/properties/results/items/anyOf/0/properties/result",
+                                "type": "string",
+                                "title": "The result schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Valid|Invalid|Error"
+                                ]
+                            },
+                            "comment": {
+                                "$id": "#/properties/results/items/anyOf/0/properties/comment",
+                                "type": "string",
+                                "title": "The comment schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Free text"
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
                     }
-                },
-                "additionalProperties": true
+                ]
             }
-        ]
-    }
+        }
+    },
+    "additionalProperties": true
 }
