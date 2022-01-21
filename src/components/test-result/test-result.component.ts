@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IQRCode } from '../../interfaces/qr-code.interface';
-import { TestResult, PlatformEnum, TestResultEnum, ITestResultEntry } from '../../interfaces/model.interface';
+import { IQRCode, TestResultEnum } from '../../interfaces/model.interface';
 import { AppStore } from '../../stores/app.store';
 
 @Component({
@@ -42,7 +41,7 @@ export class TestResultComponent implements OnInit {
   report(result: TestResultEnum) {
     const id = this.store.selectedQr.value?.id
     if (!!id) {
-      this.store.capture({ file: id, result: result, comment: this.model.reason,})
+      this.store.capture({ file: id, result: result, comment: this.model.reason, })
       this.broadcast();
       this.cleanup();
     } else {

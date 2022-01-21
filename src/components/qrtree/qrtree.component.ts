@@ -3,10 +3,8 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import * as _ from 'lodash';
 import { AppStore } from '../../stores/app.store';
-
-// TODO: Move the interface into a common place.
 import { TreeNode, FlatNode } from '../../interfaces/tree.interface'
-import { IQRCode } from 'src/interfaces/qr-code.interface';
+import { IQRCode  } from '../../interfaces/model.interface';
 
 @Component({
   selector: 'app-qrtree',
