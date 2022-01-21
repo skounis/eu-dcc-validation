@@ -14,7 +14,7 @@ import { IQRCode  } from '../../interfaces/model.interface';
 export class QRTreeComponent implements OnInit {
 
   constructor(private store: AppStore) {
-    let data = this._group(this.store.data.value);
+    let data = this._group(this.store.getData().value);
     this.dataSource.data = data;
   }
 
@@ -54,11 +54,11 @@ export class QRTreeComponent implements OnInit {
   hasChild = (_: number, node: FlatNode) => node.expandable;
 
   public select(item: any) {
-    const qr = this.store.getData().find(i => {
+    const qr = this.store.getData().value.find(i => {
       return i.title === item.title;
     });
     if (!!qr) {
-      this.store.setSelectedQr(qr);
+      this.store.setSelected(qr);
     }
   }
 }

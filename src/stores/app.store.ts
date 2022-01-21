@@ -11,10 +11,11 @@ import { GithubService } from '../services/github.service';
 export class AppStore {
 
   private results = new TestResult();
-  public raw: RepositoryContent | null = null;
-  public data = new BehaviorSubject<IQRCode[]>([]);
-  public selectedQr = new BehaviorSubject<IQRCode | null>(null);
-  public message = new BehaviorSubject<string>('');
+  private raw: RepositoryContent | null = null;
+  private data = new BehaviorSubject<IQRCode[]>([]);
+  private selected = new BehaviorSubject<IQRCode | null>(null);
+  private message = new BehaviorSubject<string>('');
+
   constructor(private localStorage: LocalStorageService, private github: GithubService) {
   }
 
@@ -25,8 +26,18 @@ export class AppStore {
     // returned data.
   }
 
-  getData(): IQRCode[] {
-    return this.data.value;
+  /**
+   * @returns The raw API response
+   */
+  getRaw(): RepositoryContent | null {
+    return this.raw;
+  }
+  /**
+   * The data mapped a collection of `IQCode`s
+   * @returns Q
+   */
+  getData(): BehaviorSubject<IQRCode[]> {
+    return this.data;
   }
 
   setData(data: RepositoryContent) {
@@ -39,30 +50,42 @@ export class AppStore {
       return { id: i.path, country: parts[COUNTRY], title: i.path, version: parts[VERSION], file: parts[FILE], uri: i.url }
     });
     this.data.next(mapped);
-    this.setSelectedQr(mapped[0])
+    this.setSelected(mapped[0])
   }
 
   flushData() {
     this.data.next([]);
   }
 
-  getSelectedQr(): IQRCode | null {
-    return this.selectedQr.value;
+  /**
+   * Get the selected QR Code
+   * @returns The value `IQRCode` of the selected QR code
+   */
+  getSelected(): BehaviorSubject<IQRCode | null> {
+    return this.selected;
   }
 
-  setSelectedQr(value: IQRCode) {
+  /**
+   * Update/Set the selected QR Code.
+   * 
+   * Resolves the QR Code by loading its Base64 image. Updates the 
+   * selected QR Code and broadcasts it.
+   * @param value The QR Code
+   */
+  setSelected(value: IQRCode) {
     this.github.getImage(value.uri).subscribe((item: any) => {
       value.qrcode64 = item;
-      this.selectedQr.next(value);
+      this.selected.next(value);
     });
-
   }
 
   /**
    * Get the last message broadcasted.
+   * 
+   * @returns 
    */
-  getMessage() {
-    this.message.value;
+  getMessage(): BehaviorSubject<string> {
+    return this.message;
   }
 
   /**
@@ -78,28 +101,28 @@ export class AppStore {
    * // TODO: Review again
    */
   flushSelectedQr() {
-    this.selectedQr.next(null);
+    this.selected.next(null);
   }
 
   /**
-   * Move the to previous item.
+   * Move the to previous item/QR Code.
    */
   previous() {
     const index = this.index() - 1;
     if (index >= 0) {
-      this.setSelectedQr(this.data.value[index]);
+      this.setSelected(this.data.value[index]);
     } else {
       console.warn('Store: Start of the array reached.')
     }
   }
 
   /**
-   * Move the to next item.
+   * Move the to next item/QR Code.
    */
   next() {
     const index = this.index() + 1;
     if (index < this.data.value.length) {
-      this.setSelectedQr(this.data.value[index]);
+      this.setSelected(this.data.value[index]);
     } else {
       console.warn('Store: End of the array reached.')
     }
@@ -139,7 +162,7 @@ export class AppStore {
    */
   private index() {
     const index = this.data.value.findIndex(i => {
-      return i.title === this.selectedQr.value?.title
+      return i.title === this.selected.value?.title
     })
     return index;
   }
