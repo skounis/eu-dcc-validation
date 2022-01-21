@@ -42,9 +42,19 @@ export class TestResultComponent implements OnInit {
     const id = this.store.selectedQr.value?.id
     if (!!id) {
       this.store.capture({ ref: id, result: result, comments: this.model.reason, image: '' })
+      this.broadcast();
+      this.cleanup();
     } else {
       // TODO: Handle error.
       console.error('No QRcode selected.');
     }
+  }
+
+  private broadcast() {
+    this.store.setMessage('Responce captured.')
+  }
+
+  private cleanup() {
+    this.model = { reason: '' }
   }
 }

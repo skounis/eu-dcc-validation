@@ -24,6 +24,7 @@ import { QrListComponent } from '../components/qr-list/qr-list.component';
 import { QRTreeComponent } from '../components/qrtree/qrtree.component';
 import { TestResultComponent } from '../components/test-result/test-result.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSidenavModule,
     MatToolbarModule,
     MatTreeModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: loadInitialData, deps: [DataLoaderService], multi: true },
