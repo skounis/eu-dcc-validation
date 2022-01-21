@@ -15,7 +15,7 @@ export class AppStore {
   public raw: RepositoryContent | null = null;
   public data = new BehaviorSubject<IQRCode[]>([]);
   public selectedQr = new BehaviorSubject<IQRCode | null>(null);
-
+  public message = new BehaviorSubject<string>('');
   constructor(private localStorage: LocalStorageService, private github: GithubService) {
   }
 
@@ -58,6 +58,15 @@ export class AppStore {
     });
 
   }
+
+  getMessage() {
+    this.message.value;
+  }
+
+  setMessage(value: string) {
+    this.message.next(value);
+  }
+
 
   flushSelectedQr() {
     this.selectedQr.next(null);
