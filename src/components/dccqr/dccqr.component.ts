@@ -15,7 +15,7 @@ export class DCCQRComponent implements OnInit {
 
   constructor(private store: AppStore, private sanitizer: DomSanitizer) {
     this.item = null;
-    this.store.selectedQr.subscribe((selectedQr: IQRCode | null) => {
+    this.store.getSelected().subscribe((selectedQr: IQRCode | null) => {
       this.item = selectedQr;
       this.imagePath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
         + selectedQr?.qrcode64);

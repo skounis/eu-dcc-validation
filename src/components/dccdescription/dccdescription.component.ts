@@ -51,8 +51,8 @@ export class DCCDescriptionComponent implements OnInit {
   constructor(private store: AppStore) {
     this.dataSource2.data = DCC_DATA;
     this.item = null;
-    this.store.selectedQr.subscribe((selectedQr: IQRCode | null) => {
-      this.item = selectedQr;
+    this.store.getSelected().subscribe((selected: IQRCode | null) => {
+      this.item = selected;
       console.log('DCCDescriptionComponent: Selected: ', this.item)
     });
   }

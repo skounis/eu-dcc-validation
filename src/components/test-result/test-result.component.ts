@@ -14,7 +14,7 @@ export class TestResultComponent implements OnInit {
 
   constructor(private store: AppStore) {
     this.item = null;
-    this.store.selectedQr.subscribe((selectedQr: IQRCode | null) => {
+    this.store.getSelected().subscribe((selectedQr: IQRCode | null) => {
       this.item = selectedQr;
       console.log('TestResultComponent: Selected: ', this.item)
     });
@@ -39,13 +39,14 @@ export class TestResultComponent implements OnInit {
   }
 
   report(result: TestResultEnum) {
-    const id = this.store.selectedQr.value?.id
+    const id = this.store.getSelected().value?.id
     if (!!id) {
       this.store.capture({ file: id, result: result, comment: this.model.reason, })
       this.broadcast();
       this.cleanup();
     } else {
       // TODO: Handle error.
+      this.store.setMessage('ERROR: No QRcode selected. See your console.')
       console.error('No QRcode selected.');
     }
   }

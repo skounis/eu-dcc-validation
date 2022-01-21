@@ -13,12 +13,12 @@ export class QrListComponent {
 
   constructor(private store: AppStore) {
     this.data = [];
-    this.store.data.subscribe((data: IQRCode[]) => {
+    this.store.getData().subscribe((data: IQRCode[]) => {
       this.data = data;
     });
   }
 
   public selectQr(item: any) {
-    this.store.setSelectedQr(item);
+    this.store.setSelected(item);
   }
 }

@@ -17,7 +17,7 @@ export class AppComponent {
   constructor(private store: AppStore,
     private sanitizer: DomSanitizer,
     readonly snackBar: MatSnackBar) {
-    this.store.message.subscribe((message: string) => {
+    this.store.getMessage().subscribe((message: string) => {
       if (!message) { return }
       this.open(message);
     });
