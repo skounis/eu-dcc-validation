@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import * as _ from 'lodash';
@@ -12,15 +12,24 @@ import { IQRCode, TestResultEnum  } from '../../interfaces/model.interface';
   styleUrls: ['./qrtree.component.css']
 })
 export class QRTreeComponent implements OnInit {
+  
+  selected: IQRCode | null = null;
 
   constructor(private store: AppStore) {
     let data = this._group(this.store.getData().value);
     this.dataSource.data = data;
+    this.store.getSelected().subscribe((selected: IQRCode | null) => {
+      this.selected = selected;
+    });
   }
 
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void {
+    this.treeControl.expandAll();
+  }
+  
   private _group(data: IQRCode[]) {
     let grouped = _.groupBy(data, 'country');
     let nodes: any = Object.keys(grouped).map((key, index) => {

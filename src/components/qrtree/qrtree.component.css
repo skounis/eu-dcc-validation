@@ -1,0 +1,6 @@
+.dcc_selected {
+ background-color: rgba(63,81,181,.15);
+}
+.dcc_selected button {
+    background: transparent;
+}
