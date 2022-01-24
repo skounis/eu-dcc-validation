@@ -41,6 +41,10 @@ export class AppStore {
     return this.data;
   }
 
+  /**
+   * Set the QR code data.
+   * @param data 
+   */
   setData(data: RepositoryContent) {
     const COUNTRY = 0;
     const VERSION = 1;
@@ -64,10 +68,19 @@ export class AppStore {
     this.setSelected(this.selected.value || mapped[0])
   }
 
+  /**
+   * Clear the QR code data.
+   */
   flushData() {
     this.data.next([]);
   }
 
+  /**
+   * @returns The submitted results
+   */
+  getResults(): TestResult {
+    return this.results;
+  }
   /**
    * Get the selected QR Code
    * @returns The value `IQRCode` of the selected QR code
