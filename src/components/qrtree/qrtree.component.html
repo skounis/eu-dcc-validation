@@ -3,7 +3,13 @@
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
     <!-- use a disabled button to provide padding for tree leaf -->
     <!-- <button mat-icon-button disabled></button> -->
-    <button mat-flat-button (click)="select(node)">{{node.title}}</button>
+
+    <button mat-flat-button (click)="select(node)" matBadge="" matBadgePosition="after">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{icon(node.title)}}
+      </mat-icon>
+      {{node.title}}
+    </button>
   </mat-tree-node>
   <!-- This is the tree node template for expandable nodes -->
   <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>

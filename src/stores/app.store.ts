@@ -6,6 +6,7 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { RepositoryContent } from '../interfaces/github.interface';
 
 import { GithubService } from '../services/github.service';
+import { typeWithParameters } from '@angular/compiler/src/render3/util';
 
 @Injectable()
 export class AppStore {
@@ -47,10 +48,20 @@ export class AppStore {
     this.raw = data;
     const mapped = data.tree.map((i): IQRCode => {
       const parts = i.path.split('/');
-      return { id: i.path, country: parts[COUNTRY], title: i.path, version: parts[VERSION], file: parts[FILE], uri: i.url }
+      let item: IQRCode = { 
+        id: i.path, 
+        country: parts[COUNTRY], 
+        title: i.path, 
+        version: parts[VERSION], 
+        file: parts[FILE], 
+        uri: i.url,        
+      }
+      item = this.decorate(item);
+      return item;
     });
     this.data.next(mapped);
-    this.setSelected(mapped[0])
+    // Set the current or first QRCode as selected
+    this.setSelected(this.selected.value || mapped[0])
   }
 
   flushData() {
@@ -135,6 +146,10 @@ export class AppStore {
     console.log('Store: Capture the scan result: ', result)
     this.results.addEntry(result)
     this.serialize();
+    // Update data
+    if(this.raw) {
+      this.setData(this.raw);
+    }
   }
 
   /**
@@ -165,5 +180,37 @@ export class AppStore {
       return i.title === this.selected.value?.title
     })
     return index;
+  }
+
+  /**
+   * Filter QR Codes by property
+   * 
+   * @param property the property 
+   * @param value the value
+   * @returns Array of QR Codes
+   */
+  public filter(property: string, value: any): IQRCode[] {
+    return this.getData().value.filter(e => {
+      return e[property as keyof IQRCode] == value;
+    });
+  }
+
+  /**
+   * Find QR code by id
+   * 
+   * @param id QR code identifier
+   * @returns qr code
+   */
+  public find(id: string, ): IQRCode {
+    const items = this.filter('id', id);
+    return items[0];
+  }
+
+  public decorate(item: IQRCode): IQRCode {
+    const items = this.results.findEntry(item.id);
+    if (!!items && items.length > 0) {
+      item.result = items[0].result;
+    }
+    return item;
   }
 }
