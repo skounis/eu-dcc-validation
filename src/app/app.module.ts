@@ -20,7 +20,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
-import { QrListComponent } from '../components/qr-list/qr-list.component';
 import { QRTreeComponent } from '../components/qrtree/qrtree.component';
 import { TestResultComponent } from '../components/test-result/test-result.component';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -31,7 +30,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AppComponent,
     DCCDescriptionComponent,
     DCCQRComponent,
-    QrListComponent,
     QRTreeComponent,
     TestResultComponent
   ],
