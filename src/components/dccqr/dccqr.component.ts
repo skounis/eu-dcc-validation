@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { IQRCode  } from '../../interfaces/model.interface';
+import { IQRCode, TestResultEnum } from '../../interfaces/model.interface';
 import { AppStore } from '../../stores/app.store';
 
 @Component({
@@ -34,6 +34,21 @@ export class DCCQRComponent implements OnInit {
   next() {
     console.log('DCCQRComponent: Display the next QR code.')
     this.store.next();
+  }
+
+  // TODO: move them in a common place.
+  icon(id: string) {
+    const item = this.store.find(id);
+    switch (item?.result) {
+      case TestResultEnum.Valid:
+        return 'done';
+      case TestResultEnum.Invalid:
+        return 'report_problem'
+      case TestResultEnum.Error:
+        return 'error'
+      default:
+        return 'qr_code'
+    }
   }
 
 }
