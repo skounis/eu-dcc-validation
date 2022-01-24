@@ -1,6 +1,15 @@
 .dcc_selected {
- background-color: rgba(63,81,181,.15);
+  background-color: rgba(63, 81, 181, .15);
 }
+
 .dcc_selected button {
-    background: transparent;
+  background: transparent;
+
+}
+
+button {
+  max-width: 182px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
 }
