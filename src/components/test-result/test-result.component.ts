@@ -44,6 +44,7 @@ export class TestResultComponent implements OnInit {
       this.store.capture({ file: id, result: result, comment: this.model.reason, })
       this.broadcast();
       this.cleanup();
+      this.store.next();
     } else {
       // TODO: Handle error.
       this.store.setMessage('ERROR: No QRcode selected. See your console.')
