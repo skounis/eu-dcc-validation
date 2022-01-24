@@ -4,7 +4,8 @@
     <!-- use a disabled button to provide padding for tree leaf -->
     <!-- <button mat-icon-button disabled></button> -->
 
-    <button mat-flat-button (click)="select(node)" matBadge="" matBadgePosition="after">
+    <button mat-flat-button (click)="select(node)" matBadge="" matBadgePosition="after"
+    [matTooltip]="node.title" matTooltipPosition="above" matTooltipHideDelay="100">
       <mat-icon class="mat-icon-rtl-mirror">
         {{icon(node.title)}}
       </mat-icon>
