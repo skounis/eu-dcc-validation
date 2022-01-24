@@ -1,5 +1,10 @@
 <mat-card>
   <mat-card-header>
+    <div mat-card-avatar class="example-header-image">
+      <mat-icon>
+        {{(!!item) ? icon(item.id) : 'qr_code'}}
+      </mat-icon>
+    </div>
     <mat-card-title>{{item?.title}}</mat-card-title>
     <mat-card-subtitle>{{item?.country}}</mat-card-subtitle>
   </mat-card-header>
