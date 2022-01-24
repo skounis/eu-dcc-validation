@@ -3,17 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, pipe, UnaryFunction } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { RepositoryContent, RepositoryContentItem, RepositoryNode } from '../interfaces/github.interface';
-
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GithubService {
+  private endpoint = environment.github.endpoint;
+  private user = environment.github.user;
+  private token = environment.github.token;
+  private authentication = "Basic " + btoa(`${this.user}:${this.token}`)
 
-  // TODO: move to a config and inject
-  githubApiUrl = "https://api.github.com/repos/eu-digital-green-certificates/dcc-quality-assurance/git/trees/main?recursive=1";
+  githubApiUrl = this.endpoint;
 
-  githubOptions = { headers: { "Accept": "application/vnd.github.v3+json" } };
+  githubOptions = { 
+    headers: { 
+      "Accept": "application/vnd.github.v3+json",
+      "Authorization": this.authentication
+    } 
+  };
+
 
   constructor(private http: HttpClient) {
   }
