@@ -9,7 +9,7 @@
         {
             "metadata": {
                 "country": "XX",
-                "dateCompleted": "20220120T102611Z",
+                "completedOn": "2022-01-24T09:01:15.827Z",
                 "commit": "4699f4b13a1010d10d9c4f80eac59beec5cbb613",
                 "platform": "IOS|ANDROID"
             },
@@ -41,14 +41,14 @@
             "examples": [
                 {
                     "country": "XX",
-                    "dateCompleted": "20220120T102611Z",
+                    "completedOn": "2022-01-24T09:01:15.827Z",
                     "commit": "4699f4b13a1010d10d9c4f80eac59beec5cbb613",
                     "platform": "IOS|ANDROID"
                 }
             ],
             "required": [
                 "country",
-                "dateCompleted",
+                "completedOn",
                 "commit",
                 "platform"
             ],
@@ -63,14 +63,15 @@
                         "XX"
                     ]
                 },
-                "dateCompleted": {
-                    "$id": "#/properties/metadata/properties/dateCompleted",
+                "completedOn": {
+                    "$id": "#/properties/metadata/properties/completedOn",
                     "type": "string",
-                    "title": "The dateCompleted schema",
-                    "description": "An explanation about the purpose of this instance.",
+                    "format": "date-time",
+                    "title": "The completedOn schema",
+                    "description": "The date the test is complented in ISO format YYYY:MM::DDThh:mm:ss.sTZD. e.g. 2022-01-24T09:01:15.827Z ",
                     "default": "",
                     "examples": [
-                        "20220120T102611Z"
+                        "2022-01-24T09:01:15.827Z"
                     ]
                 },
                 "commit": {
@@ -86,11 +87,14 @@
                 "platform": {
                     "$id": "#/properties/metadata/properties/platform",
                     "type": "string",
+                    "enum": ["IOS", "ANDROID", "WEB"],
                     "title": "The platform schema",
                     "description": "An explanation about the purpose of this instance.",
                     "default": "",
                     "examples": [
-                        "IOS|ANDROID"
+                        "IOS",
+                        "ANDROID",
+                        "WEB"
                     ]
                 }
             },
@@ -106,12 +110,12 @@
                 [
                     {
                         "file": "NL/1.3.0/REC.png",
-                        "result": "Valid|Invalid|Error",
+                        "result": "VALID",
                         "comment": "Free text"
                     },
                     {
                         "file": "NL/1.3.0/REC.png",
-                        "result": "Valid|Invalid|Error",
+                        "result": "INVALID",
                         "comment": "Free text"
                     }
                 ]
@@ -129,7 +133,7 @@
                         "examples": [
                             {
                                 "file": "NL/1.3.0/REC.png",
-                                "result": "Valid|Invalid|Error",
+                                "result": "ERROR",
                                 "comment": "Free text"
                             }
                         ],
@@ -152,11 +156,14 @@
                             "result": {
                                 "$id": "#/properties/results/items/anyOf/0/properties/result",
                                 "type": "string",
+                                "enum": ["VALID", "INVALID", "ERROR"],
                                 "title": "The result schema",
                                 "description": "An explanation about the purpose of this instance.",
                                 "default": "",
                                 "examples": [
-                                    "Valid|Invalid|Error"
+                                    "VALID",
+                                    "INVALID",
+                                    "ERROR"
                                 ]
                             },
                             "comment": {
