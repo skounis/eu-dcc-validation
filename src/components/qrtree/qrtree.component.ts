@@ -4,7 +4,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import * as _ from 'lodash';
 import { AppStore } from '../../stores/app.store';
 import { TreeNode, FlatNode } from '../../interfaces/tree.interface'
-import { IQRCode  } from '../../interfaces/model.interface';
+import { IQRCode, TestResultEnum  } from '../../interfaces/model.interface';
 
 @Component({
   selector: 'app-qrtree',
@@ -59,6 +59,24 @@ export class QRTreeComponent implements OnInit {
     });
     if (!!qr) {
       this.store.setSelected(qr);
+    }
+  }
+
+  random() {
+    return Math.ceil(Math.floor(Math.random() * 10)/3);
+  }
+
+  icon(id: string){
+    const item = this.store.find(id);
+    switch (item?.result) {
+      case TestResultEnum.Valid:
+        return 'done';
+      case TestResultEnum.Invalid:
+        return 'report_problem'
+      case TestResultEnum.Error:
+        return 'error'
+      default:
+        return 'qr_code'
     }
   }
 }

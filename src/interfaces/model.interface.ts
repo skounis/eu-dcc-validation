@@ -90,6 +90,12 @@ export class TestResult implements ITestResult {
     // TODO: Do not mutate.
     this.results.push(entry);
   }
+
+  findEntry(id: string): ITestResultEntry[] {
+    return _.filter(this.results, (e) => {
+      return e.file == id;
+    });
+  }
 }
 
 export class TestResultMetadata implements ITestResultMetadata {
@@ -123,4 +129,6 @@ export class TestResultMetadata implements ITestResultMetadata {
   uri: string;
   /** The base64 representation of the QR Code. */
   qrcode64?: string;
+  /** The validation result */
+  result?: TestResultEnum
 }
