@@ -52,13 +52,13 @@ export class AppStore {
     this.raw = data;
     const mapped = data.tree.map((i): IQRCode => {
       const parts = i.path.split('/');
-      let item: IQRCode = { 
-        id: i.path, 
-        country: parts[COUNTRY], 
-        title: i.path, 
-        version: parts[VERSION], 
-        file: parts[FILE], 
-        uri: i.url,        
+      let item: IQRCode = {
+        id: i.path,
+        country: parts[COUNTRY],
+        title: i.path,
+        version: parts[VERSION],
+        file: parts[FILE],
+        uri: i.url,
       }
       item = this.decorate(item);
       return item;
@@ -97,9 +97,15 @@ export class AppStore {
    * @param value The QR Code
    */
   setSelected(value: IQRCode) {
-    this.github.getImage(value.uri).subscribe((item: any) => {
-      value.qrcode64 = item;
-      this.selected.next(value);
+    this.github.getImage(value.uri).subscribe({
+      next: (item: any) => {
+        value.qrcode64 = item;
+        this.selected.next(value);
+      },
+      error: (error) => {
+        this.setMessage('Error fetching the QR Code. See the console!');
+        console.error('app.store.ts: setSelected', error);
+      }
     });
   }
 
@@ -136,6 +142,7 @@ export class AppStore {
     if (index >= 0) {
       this.setSelected(this.data.value[index]);
     } else {
+      this.setMessage('You reached the 1st QR code in the list.');
       console.warn('Store: Start of the array reached.')
     }
   }
@@ -148,6 +155,7 @@ export class AppStore {
     if (index < this.data.value.length) {
       this.setSelected(this.data.value[index]);
     } else {
+      this.setMessage('You reached the last QR code in the list.');
       console.warn('Store: End of the array reached.')
     }
   }
@@ -160,7 +168,7 @@ export class AppStore {
     this.results.addEntry(result)
     this.serialize();
     // Update data
-    if(this.raw) {
+    if (this.raw) {
       this.setData(this.raw);
     }
   }
@@ -214,7 +222,7 @@ export class AppStore {
    * @param id QR code identifier
    * @returns qr code
    */
-  public find(id: string, ): IQRCode {
+  public find(id: string): IQRCode {
     const items = this.filter('id', id);
     return items[0];
   }
