@@ -421,13 +421,13 @@
       <app-progress></app-progress>
       <span class="example-spacer"></span>
       <button mat-button (click)="upload()" class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>cloud_upload</mat-icon> Upload Test Results
+        <mat-icon>cloud_upload</mat-icon> Submit the results
       </button>
-      <button mat-button (click)="export()" [disabled]="!!downloadJsonHref">
+      <!-- <button mat-button (click)="export()" [disabled]="!!downloadJsonHref">
         <mat-icon>code</mat-icon>Export
       </button>
       <a *ngIf="!!downloadJsonHref" mat-flat-button title="Download JSON" [href]="downloadJsonHref"
-        download="test-results.json" (click)="clear()">Download</a>
+        download="test-results.json" (click)="clear()">Download</a> -->
     </mat-toolbar>
   </footer>
 </div>
