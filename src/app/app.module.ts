@@ -10,7 +10,7 @@ import { DCCDescriptionComponent } from '../components/dccdescription/dccdescrip
 import { DCCQRComponent } from '../components/dccqr/dccqr.component';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,6 +26,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MockDataInterceptor } from '../interceptors/mock-data.interceptor'
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: loadInitialData, deps: [DataLoaderService], multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: MockDataInterceptor, multi: true},
     DataLoaderService,
     AppStore,
     ...environment.providers,

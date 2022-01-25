@@ -3,6 +3,7 @@ import { MockDataInterceptor } from '../interceptors/mock-data.interceptor';
 
 export const environment = {
   production: true,
+  maxAge: 3.6e+6, // 1 hour
   api: {
     base: 'https://some-domain.com/'
   },
