@@ -363,12 +363,33 @@
     </button>
     <span>EU DCC Validation</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>favorite</mat-icon>
     </button>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
       <mat-icon>share</mat-icon>
-    </button>
+    </button> -->
+    <mat-radio-group aria-label="Select a platform"
+      [formControl]="platformControl"
+      [(ngModel)]="platform">
+      <mat-radio-button value="ANDROID">Android</mat-radio-button>
+      <mat-radio-button value="IOS">iOS</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field appearance="fill">
+      <input type="text"
+      placeholder="Country"
+      aria-label="Country"
+      matInput
+      [formControl]="countryControl"
+      [matAutocomplete]="auto"
+      [(ngModel)]="country">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
   </mat-toolbar>
 </div>
 
@@ -405,7 +426,8 @@
       <button mat-button (click)="export()" [disabled]="!!downloadJsonHref">
         <mat-icon>code</mat-icon>Export
       </button>
-      <a *ngIf="!!downloadJsonHref" mat-flat-button  title="Download JSON" [href]="downloadJsonHref" download="test-results.json" (click)="clear()">Download</a>
+      <a *ngIf="!!downloadJsonHref" mat-flat-button title="Download JSON" [href]="downloadJsonHref"
+        download="test-results.json" (click)="clear()">Download</a>
     </mat-toolbar>
   </footer>
 </div>

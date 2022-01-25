@@ -96,6 +96,10 @@ export class TestResult implements ITestResult {
       return e.file == id;
     });
   }
+
+  touch() {
+    this.metadata.completedOn = new Date();
+  }
 }
 
 export class TestResultMetadata implements ITestResultMetadata {
@@ -105,7 +109,7 @@ export class TestResultMetadata implements ITestResultMetadata {
   platform: PlatformEnum;
   constructor(country?: string, completedOn?: Date, commit?: string, platform?: PlatformEnum) {
     this.country = country || 'EL';
-    this.completedOn= completedOn || new Date();
+    this.completedOn = completedOn || new Date();
     this.commit = commit || '';
     this.platform = platform || PlatformEnum.Android
   }
