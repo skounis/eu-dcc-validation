@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import * as _ from 'lodash';
-import { IQRCode, TestResult, ITestResultEntry } from '../interfaces/model.interface';
+import { IQRCode, TestResult, ITestResultEntry, PlatformEnum } from '../interfaces/model.interface';
 import { LocalStorageService } from '../services/local-storage.service';
 import { RepositoryContent } from '../interfaces/github.interface';
 
@@ -16,6 +16,16 @@ export class AppStore {
   private data = new BehaviorSubject<IQRCode[]>([]);
   private selected = new BehaviorSubject<IQRCode | null>(null);
   private message = new BehaviorSubject<string>('');
+
+  public set country(value: string) {
+    this.results.metadata.country = value;
+    this.serialize();    
+  }
+
+  public set platform(value: PlatformEnum) {
+    this.results.metadata.platform = value;
+    this.serialize();
+  }
 
   constructor(private localStorage: LocalStorageService, private github: GithubService) {
   }
@@ -165,7 +175,7 @@ export class AppStore {
    */
   capture(result: ITestResultEntry) {
     console.log('Store: Capture the scan result: ', result)
-    this.results.addEntry(result)
+    this.results.addEntry(result);
     this.serialize();
     // Update data
     if (this.raw) {
@@ -177,6 +187,7 @@ export class AppStore {
    * Store the results
    */
   public serialize() {
+    this.results.touch();
     this.localStorage.setItem(LocalStorageService.SCAN_RESULT_KEY, this.results);
   }
   /**

@@ -9,7 +9,7 @@ import { DataLoaderService } from '../services/data-loader.service';
 import { DCCDescriptionComponent } from '../components/dccdescription/dccdescription.component';
 import { DCCQRComponent } from '../components/dccqr/dccqr.component';
 import { environment } from '../environments/environment';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -30,6 +30,8 @@ import { MockDataInterceptor } from '../interceptors/mock-data.interceptor';
 import { ProgressComponent } from '../components/progress/progress.component'
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
     MatCardModule,
@@ -61,7 +64,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatBadgeModule,
     MatTooltipModule,
     MatChipsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatAutocompleteModule,
+    MatRadioModule
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: loadInitialData, deps: [DataLoaderService], multi: true },
