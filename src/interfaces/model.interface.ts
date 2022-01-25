@@ -132,3 +132,24 @@ export class TestResultMetadata implements ITestResultMetadata {
   /** The validation result */
   result?: TestResultEnum
 }
+
+export class Analytics {
+  constructor(private rqCodes: Array<IQRCode>, private results: TestResult) {}
+
+  /**
+   * @returns The number of all the QR Codes for testing.
+   */
+  public codes(): number {
+    return this.rqCodes.length | 0;
+  }
+
+  /**
+   * @param category The test result type.
+   * @returns The number of test submitted.
+   */
+  public progress(category: TestResultEnum | null): number {
+    // Return all
+    if (!category) return this.results.results.length;
+    return this.results.results.filter(value => value.result === category).length  
+  }
+}

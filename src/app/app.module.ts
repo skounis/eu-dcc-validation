@@ -26,7 +26,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MockDataInterceptor } from '../interceptors/mock-data.interceptor'
+import { MockDataInterceptor } from '../interceptors/mock-data.interceptor';
+import { ProgressComponent } from '../components/progress/progress.component'
+import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +38,8 @@ import { MockDataInterceptor } from '../interceptors/mock-data.interceptor'
     DCCDescriptionComponent,
     DCCQRComponent,
     QRTreeComponent,
-    TestResultComponent
+    TestResultComponent,
+    ProgressComponent
   ],
   imports: [
     AppRoutingModule,
@@ -54,11 +59,13 @@ import { MockDataInterceptor } from '../interceptors/mock-data.interceptor'
     MatExpansionModule,
     MatSnackBarModule,
     MatBadgeModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule,
+    MatProgressBarModule
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: loadInitialData, deps: [DataLoaderService], multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: MockDataInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: MockDataInterceptor, multi: true },
     DataLoaderService,
     AppStore,
     ...environment.providers,

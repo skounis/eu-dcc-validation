@@ -4,7 +4,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import * as _ from 'lodash';
 import { AppStore } from '../../stores/app.store';
 import { TreeNode, FlatNode } from '../../interfaces/tree.interface'
-import { IQRCode, TestResultEnum  } from '../../interfaces/model.interface';
+import { IQRCode, TestResultEnum, Analytics  } from '../../interfaces/model.interface';
 
 @Component({
   selector: 'app-qrtree',
@@ -12,7 +12,7 @@ import { IQRCode, TestResultEnum  } from '../../interfaces/model.interface';
   styleUrls: ['./qrtree.component.css']
 })
 export class QRTreeComponent implements OnInit {
-  
+
   selected: IQRCode | null = null;
 
   constructor(private store: AppStore) {
