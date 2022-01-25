@@ -32,6 +32,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DownloadDialogComponent } from '../components/download-dialog/download-dialog.component';
+
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { MatRadioModule } from '@angular/material/radio';
     DCCQRComponent,
     QRTreeComponent,
     TestResultComponent,
-    ProgressComponent
+    ProgressComponent,
+    DownloadDialogComponent
   ],
   imports: [
     AppRoutingModule,
@@ -66,7 +70,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatChipsModule,
     MatProgressBarModule,
     MatAutocompleteModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: loadInitialData, deps: [DataLoaderService], multi: true },

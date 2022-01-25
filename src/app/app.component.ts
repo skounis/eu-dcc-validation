@@ -7,6 +7,8 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { PlatformEnum } from '../interfaces/model.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { DownloadDialogComponent } from '../components/download-dialog/download-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +37,8 @@ export class AppComponent implements OnInit {
 
   constructor(private store: AppStore,
     private sanitizer: DomSanitizer,
-    readonly snackBar: MatSnackBar) {
+    readonly snackBar: MatSnackBar,
+    public dialog: MatDialog) {
     this.countries = this.prepare();
     console.log(this.countries);
     this.store.getMessage().subscribe((message: string) => {
@@ -50,11 +53,11 @@ export class AppComponent implements OnInit {
       map(value => this._filter(value)),
     );
 
-    this.countryControl.valueChanges.subscribe(()=>{
+    this.countryControl.valueChanges.subscribe(() => {
       console.log('Country selected:', this.countryControl.value)
     })
 
-    this.platformControl.valueChanges.subscribe(()=>{
+    this.platformControl.valueChanges.subscribe(() => {
       console.log('Platform selected:', this.platformControl.value)
     })
   }
@@ -68,6 +71,7 @@ export class AppComponent implements OnInit {
 
   upload() {
     this.store.setMessage('Not implemented!')
+    this.openDownloadDialog();
   }
 
   clear() {
@@ -88,6 +92,16 @@ export class AppComponent implements OnInit {
     return this.snackBar.open(message, action, config);
   }
 
+  openDownloadDialog() {
+    this.export();
+    const data = this.downloadJsonHref;
+    const dialogRef = this.dialog.open(DownloadDialogComponent, {
+      data: data
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   private prepare() {
     let grouped = _.groupBy(this.store.getData().value, 'country');
     return Object.keys(grouped);
