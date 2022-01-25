@@ -13,8 +13,8 @@ export const environment = {
     // Increases the API calls limit
     // https://github.com/settings/tokens
     authenticate: false,
-    user: 'USERNAME',
-    token: 'PERSONAL_ACCESS_TOKEN'
+    user: 'fbcf454f29a701587efd',
+    token: '86f7c6d2348f48c372f09129ea6cbddec8ad97ff'
   },
   providers: [
     // Provider for mock data
