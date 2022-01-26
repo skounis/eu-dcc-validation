@@ -6,7 +6,7 @@ import { now } from 'lodash';
 import { environment } from '../environments/environment';
 
 @Injectable()
-export class MockDataInterceptor implements HttpInterceptor {
+export class CacheDataInterceptor implements HttpInterceptor {
   //
   // TODO: Get inspired and improve 
   // https://github.com/schuchard/ng-interceptors/blob/master/src/app/cache/cache.service.ts
