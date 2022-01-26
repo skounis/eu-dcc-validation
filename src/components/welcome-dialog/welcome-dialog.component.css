@@ -1,0 +1,22 @@
+form.welcome {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+form.welcome .mat-form-field {
+  width: 100%;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 1rem;
+}
+
+.mat-expansion-panel {
+  margin-bottom: 1rem;
+}
+
+/* TODO: Make it more generic */
+.dcc-error {
+  color: #f44336;
+}
