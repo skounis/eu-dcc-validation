@@ -224,13 +224,13 @@ export class AppStore {
   deserialize(): any {
     const data = this.localStorage.getItem(LocalStorageService.SCAN_RESULT_KEY);
     if (!data || !data.results || data.results.length < 1) {
-      return false;
+      return null;
     }
     // TODO: Introduce Objervability for the Results
     // TODO: Move the Results in their own Store?
     this.results.load(data);
     this.remap();
-    return true;
+    return data;
   }
 
   /**
