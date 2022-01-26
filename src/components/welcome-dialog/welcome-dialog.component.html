@@ -3,7 +3,7 @@
 
     <mat-dialog-content class="mat-typography">
         <p>
-            Please select your <b>Country</b> and the <b>Platform</b> this test session targets.
+            Please select the <b>Platform</b> this test session targets, and your <b>Country</b>.
         </p>
 
         <p *ngIf="!!errors?.['invalidCountry']" class="dcc-error">
@@ -14,6 +14,7 @@
                 formControlName="platformControl" [(ngModel)]="platform">
                 <mat-radio-button value="ANDROID" selected>Android</mat-radio-button>
                 <mat-radio-button value="IOS">iOS</mat-radio-button>
+                <mat-radio-button value="WEB">Web</mat-radio-button>
             </mat-radio-group>
         </p>
 
@@ -60,6 +61,6 @@
 
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-        <button mat-button color="primary" [mat-dialog-close]="true" type="submit" cdkFocusInitial [disabled]="!!invalid">Save</button>
+        <button mat-button color="primary" [mat-dialog-close]="true" type="submit" cdkFocusInitial [disabled]="!!invalid">Save and Start Testing</button>
     </mat-dialog-actions>
 </form>

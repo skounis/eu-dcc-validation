@@ -4,9 +4,8 @@ import * as _ from 'lodash';
 import { IQRCode, TestResult, ITestResultEntry, PlatformEnum } from '../interfaces/model.interface';
 import { LocalStorageService } from '../services/local-storage.service';
 import { RepositoryContent } from '../interfaces/github.interface';
-
 import { GithubService } from '../services/github.service';
-import { typeWithParameters } from '@angular/compiler/src/render3/util';
+
 
 @Injectable()
 export class AppStore {
@@ -17,9 +16,16 @@ export class AppStore {
   private selected = new BehaviorSubject<IQRCode | null>(null);
   private message = new BehaviorSubject<string>('');
 
+  public get country() {
+    return this.results.metadata.country;
+  }
   public set country(value: string) {
     this.results.metadata.country = value;
     this.serialize();    
+  }
+
+  public get platform() {
+    return this.results.metadata.platform;
   }
 
   public set platform(value: PlatformEnum) {

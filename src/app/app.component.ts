@@ -18,12 +18,12 @@ import { WelcomeDialogComponent } from '../components/welcome-dialog/welcome-dia
 })
 export class AppComponent implements OnInit {
 
-  public set country(value: string) {
-    this.store.country = value;
+  public get country() {
+    return this.store.country;
   }
 
-  public set platform(value: PlatformEnum) {
-    this.store.platform = value;
+  public get platform() {
+    return this.store.platform;
   }
 
   title = 'dcc-validation-wire';
@@ -31,17 +31,10 @@ export class AppComponent implements OnInit {
 
   downloadJsonHref: any;
 
-  countries: Array<string> = [];
-  countryControl = new FormControl();
-  platformControl = new FormControl();
-  filteredOptions!: Observable<string[]>;
-
-  constructor(private store: AppStore,
+  constructor(public store: AppStore,
     private sanitizer: DomSanitizer,
     readonly snackBar: MatSnackBar,
     public dialog: MatDialog) {
-    this.countries = this.prepare();
-    console.log(this.countries);
     this.store.getMessage().subscribe((message: string) => {
       if (!message) { return }
       this.open(message);
@@ -49,21 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filteredOptions = this.countryControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value)),
-    );
-
-    this.countryControl.valueChanges.subscribe(() => {
-      console.log('Country selected:', this.countryControl.value)
-    })
-
-    this.platformControl.valueChanges.subscribe(() => {
-      console.log('Platform selected:', this.platformControl.value)
-    })
-
     this.welcome();
-
   }
 
   export() {
@@ -106,20 +85,11 @@ export class AppComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-  private prepare() {
-    let grouped = _.groupBy(this.store.getData().value, 'country');
-    return Object.keys(grouped);
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.countries.filter(option => option.toLowerCase().includes(filterValue));
-  }
 
   /**
    * Open the welcome dialog. 
    */
-  private welcome() {
+  public welcome() {
     const dialogRef = this.dialog.open(WelcomeDialogComponent, {
       disableClose: true,
       data: {}
