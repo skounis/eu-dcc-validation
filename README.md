@@ -112,6 +112,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+# Discussion
+Have an idea, a question or a comment to share? 
+* Start a discussion: https://github.com/skounis/eu-dcc-validation/discussions/
+* Join lfph.io in Slack: https://lfpublichealth.slack.com/
+
 # Licensing
 Copyright (c) 2022 Stavros Kounis (Directorate-General CONNECT), Ryan Barrett (Dutch Ministry of Health, Science, and Sports), Sofia Atsalou and all other contributors
 
