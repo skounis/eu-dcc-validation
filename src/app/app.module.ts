@@ -34,6 +34,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DownloadDialogComponent } from '../components/download-dialog/download-dialog.component';
+import { WelcomeDialogComponent } from '../components/welcome-dialog/welcome-dialog.component';
 
 
 
@@ -45,7 +46,8 @@ import { DownloadDialogComponent } from '../components/download-dialog/download-
     QRTreeComponent,
     TestResultComponent,
     ProgressComponent,
-    DownloadDialogComponent
+    DownloadDialogComponent,
+    WelcomeDialogComponent
   ],
   imports: [
     AppRoutingModule,

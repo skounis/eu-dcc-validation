@@ -9,6 +9,7 @@ import { map, startWith } from 'rxjs/operators';
 import { PlatformEnum } from '../interfaces/model.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { DownloadDialogComponent } from '../components/download-dialog/download-dialog.component';
+import { WelcomeDialogComponent } from '../components/welcome-dialog/welcome-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -60,6 +61,9 @@ export class AppComponent implements OnInit {
     this.platformControl.valueChanges.subscribe(() => {
       console.log('Platform selected:', this.platformControl.value)
     })
+
+    this.welcome();
+
   }
 
   export() {
@@ -110,5 +114,15 @@ export class AppComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.countries.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  /**
+   * Open the welcome dialog. 
+   */
+  private welcome() {
+    const dialogRef = this.dialog.open(WelcomeDialogComponent, {
+      disableClose: true,
+      data: {}
+    });
   }
 }

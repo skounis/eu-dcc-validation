@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>Welcome</h2>
+<form class="welcome" [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
+
+    <mat-dialog-content class="mat-typography">
+        <p>
+            Please select your <b>Country</b> and the <b>Platform</b> this test session targets.
+        </p>
+
+        <p *ngIf="!!errors?.['invalidCountry']" class="dcc-error">
+            Please select a country from the list.
+        </p>
+        <p>
+            <mat-radio-group aria-label="Select a platform" 
+                formControlName="platformControl" [(ngModel)]="platform">
+                <mat-radio-button value="ANDROID" selected>Android</mat-radio-button>
+                <mat-radio-button value="IOS">iOS</mat-radio-button>
+            </mat-radio-group>
+        </p>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Country</mat-label>
+            <input type="text" placeholder="Country" 
+                aria-label="Country" matInput formControlName="countryControl"
+                [matAutocomplete]="auto" [(ngModel)]="country">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    GitHub
+                </mat-panel-title>
+                <mat-panel-description>
+                    Set API credentials
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-form-field appearance="fill">
+                <mat-label>Token</mat-label>
+                <input matInput>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Secret</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <p>This application is using the GitHub API for fetching the QR Codes.
+                For <b>better performance</b> we strongly suggest to <b>prepare and enter you API credentials</b>.
+                We prepared a detailed guide on how to do so:
+            </p>
+            <ul>
+                <li><a href="https://github.com/skounis/eu-dcc-validation/wiki/Access-GitHub-API" target="_blank">How to
+                        prepare GitHub credentials.</a></li>
+            </ul>
+
+        </mat-expansion-panel>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary" [mat-dialog-close]="true" type="submit" cdkFocusInitial [disabled]="!!invalid">Save</button>
+    </mat-dialog-actions>
+</form>
