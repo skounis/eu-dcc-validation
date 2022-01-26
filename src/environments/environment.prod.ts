@@ -1,5 +1,5 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MockDataInterceptor } from '../interceptors/mock-data.interceptor';
+import { CacheDataInterceptor } from '../interceptors/cache.interceptor';
 
 export const environment = {
   production: true,
@@ -18,6 +18,6 @@ export const environment = {
   },
   providers: [
     // Provider for mock data
-    { provide: HTTP_INTERCEPTORS, useClass: MockDataInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: CacheDataInterceptor, multi: true }
   ]
 };
