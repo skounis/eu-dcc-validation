@@ -1,3 +1,31 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
 mat-icon {
-    font-size: 40px;
+  font-size: 40px;
+}
+
+.dcc-qr-wrapper {
+  display: block;
+  text-align: center;
+}
+
+.dcc-qr {
+  max-width: 300px;
+  margin: 0 !important;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.mat-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-card-content {
+  flex-grow: 1;
 }

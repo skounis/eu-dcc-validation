@@ -12,3 +12,35 @@
 .mat-form-field {
   width: 90px;
 }
+
+.dcc-content {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* .dcc-content-qr {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+} */
+
+.dcc-content>* {
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.dcc-content-submit {
+  display: flex;
+  flex-direction: column;
+  max-height: 240px;
+}
+
+.dcc-content-submit>* {
+  flex-shrink: 1;
+  flex-grow: 1;
+}
