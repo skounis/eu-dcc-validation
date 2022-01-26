@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AppStore } from '../stores/app.store';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import * as _ from 'lodash';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { PlatformEnum } from '../interfaces/model.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { DownloadDialogComponent } from '../components/download-dialog/download-dialog.component';
 import { WelcomeDialogComponent } from '../components/welcome-dialog/welcome-dialog.component';
+import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -42,7 +39,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.welcome();
+    this.restoreOrWelcome()
+  }
+
+  restoreOrWelcome() {
+    !this.restore() ? this.welcome() : null;
+  }
+
+  restore() {
+    return this.store.deserialize();
   }
 
   export() {
@@ -94,5 +99,20 @@ export class AppComponent implements OnInit {
       disableClose: true,
       data: {}
     });
+  }
+
+  /**
+   * Flush the test results from Store and Local storage.
+   */
+  flush() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      if(!!result) {
+        this.store.flushResult();
+        this.store.setMessage('All the results are deleted.')
+      }
+    });
+    
   }
 }

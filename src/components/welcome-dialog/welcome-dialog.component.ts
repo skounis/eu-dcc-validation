@@ -15,18 +15,12 @@ import { map, startWith } from 'rxjs/operators';
 export class WelcomeDialogComponent implements OnInit {
 
   countries: Array<string> = [];
-
   filteredOptions!: Observable<string[]>;
 
   welcomeForm = new FormGroup({
     countryControl: new FormControl('', Validators.required),
     platformControl: new FormControl('', Validators.required)
   });
-
-  public get errors() {
-    console.log('Validation errors', this.welcomeForm.errors)
-    return this.welcomeForm.errors
-  }
 
   public get country() {
     return this.store.country;
@@ -39,8 +33,14 @@ export class WelcomeDialogComponent implements OnInit {
   public get platform() {
     return this.store.platform || PlatformEnum.Android;
   }
+  
   public set platform(value: PlatformEnum) {
     this.store.platform = value;
+  }
+
+  public get errors() {
+    console.log('Validation errors', this.welcomeForm.errors)
+    return this.welcomeForm.errors
   }
 
   constructor(private store: AppStore) {

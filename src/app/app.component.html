@@ -397,14 +397,10 @@
     <mat-toolbar style="width: 100%;">
       <app-progress></app-progress>
       <span class="example-spacer"></span>
-      <button mat-button (click)="upload()" class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>cloud_upload</mat-icon> Submit the results
+      <button mat-button color="warn" (click)="flush()"><mat-icon>delete</mat-icon> Clear</button> 
+      <button mat-button color="primary" (click)="upload()" class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>cloud_upload</mat-icon> Export and Submit
       </button>
-      <!-- <button mat-button (click)="export()" [disabled]="!!downloadJsonHref">
-        <mat-icon>code</mat-icon>Export
-      </button>
-      <a *ngIf="!!downloadJsonHref" mat-flat-button title="Download JSON" [href]="downloadJsonHref"
-        download="test-results.json" (click)="clear()">Download</a> -->
     </mat-toolbar>
   </footer>
 </div>

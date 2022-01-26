@@ -4,7 +4,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import * as _ from 'lodash';
 import { AppStore } from '../../stores/app.store';
 import { TreeNode, FlatNode } from '../../interfaces/tree.interface'
-import { IQRCode, TestResultEnum, Analytics  } from '../../interfaces/model.interface';
+import { IQRCode, TestResultEnum, Analytics } from '../../interfaces/model.interface';
 
 @Component({
   selector: 'app-qrtree',
@@ -16,8 +16,10 @@ export class QRTreeComponent implements OnInit {
   selected: IQRCode | null = null;
 
   constructor(private store: AppStore) {
-    let data = this._group(this.store.getData().value);
-    this.dataSource.data = data;
+    this.store.getData().subscribe((data: IQRCode[]) => {
+      this.dataSource.data = this._group(data);
+      this.treeControl.expandAll();
+    });
     this.store.getSelected().subscribe((selected: IQRCode | null) => {
       this.selected = selected;
     });
@@ -29,7 +31,7 @@ export class QRTreeComponent implements OnInit {
   ngAfterViewInit(): void {
     this.treeControl.expandAll();
   }
-  
+
   private _group(data: IQRCode[]) {
     let grouped = _.groupBy(data, 'country');
     let nodes: any = Object.keys(grouped).map((key, index) => {
@@ -71,11 +73,7 @@ export class QRTreeComponent implements OnInit {
     }
   }
 
-  random() {
-    return Math.ceil(Math.floor(Math.random() * 10)/3);
-  }
-
-  icon(id: string){
+  icon(id: string) {
     const item = this.store.find(id);
     switch (item?.result) {
       case TestResultEnum.Valid:

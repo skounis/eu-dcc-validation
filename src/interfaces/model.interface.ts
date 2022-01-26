@@ -97,8 +97,17 @@ export class TestResult implements ITestResult {
     });
   }
 
+  /**
+   * Update the timestamp each time we touch.
+   */
   touch() {
     this.metadata.completedOn = new Date();
+  }
+
+  load(data: ITestResult) {
+    this.metadata = data.metadata; //TODO use new TestResultMetadata(data.metadata);
+    this.results = data.results;
+
   }
 }
 
