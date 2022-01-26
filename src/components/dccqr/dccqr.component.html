@@ -6,16 +6,11 @@
       </mat-icon>
     </div>
     <mat-card-title>{{item?.title}}</mat-card-title>
-    <mat-card-subtitle>{{item?.country}}</mat-card-subtitle>
+    <mat-card-subtitle>Scan the QR with your verifier and submit the results.</mat-card-subtitle>
   </mat-card-header>
-  <div style="width: 60%; max-width: 300px; display: block; margin: 0 auto 16px;">
-    <img style="max-width: 100%;" mat-card-image [src]="imagePath" alt="DCC QR code">
+  <div class="dcc-qr-wrapper">
+    <img class="dcc-qr" mat-card-image [src]="imagePath" alt="DCC QR code">
   </div>
-  
-  <p>
-    Scan the QR with your verifier and submit the results.
-  </p>
-
   <!-- <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
