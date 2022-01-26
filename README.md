@@ -1,5 +1,5 @@
 # EU DCC Validation process
-[![Issues](https://img.shields.io/github/issues/skounis/eu-dcc-validation?style=for-the-badge)](https://github.com/users/skounis/projects/4) [![License](https://img.shields.io/github/license/skounis/eu-dcc-validation?style=for-the-badge)](https://github.com/skounis/eu-dcc-validation#licensing) [![Live Demo](https://img.shields.io/badge/Live-Demo-green?style=for-the-badge)](https://eu-dcc-validation.web.app/)
+[![Issues](https://img.shields.io/github/issues/skounis/eu-dcc-validation?style=for-the-badge)](https://github.com/users/skounis/projects/4) [![License](https://img.shields.io/github/license/skounis/eu-dcc-validation?style=for-the-badge)](https://github.com/skounis/eu-dcc-validation#licensing)  [![Discussions](https://img.shields.io/github/discussions/skounis/eu-dcc-validation?style=for-the-badge)](https://github.com/skounis/eu-dcc-validation/discussions) [![Live Demo](https://img.shields.io/badge/Live-Demo-green?style=for-the-badge)](https://eu-dcc-validation.web.app/)
 
 The purpose of this initiative is the automation of the EU DCC validation process.
 
