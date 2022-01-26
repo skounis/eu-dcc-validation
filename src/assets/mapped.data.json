@@ -1,0 +1,26 @@
+{
+  "timestamp": 1643186370012,
+  "url": "https://api.github.com/repos/eu-digital-green-certificates/dcc-quality-assurance/git/trees/main?recursive=1",
+  "body": {
+    "sha": "25b3041700c128f50c1b2125c01c084114032eca",
+    "url": "https://api.github.com/repos/eu-digital-green-certificates/dcc-quality-assurance/git/trees/25b3041700c128f50c1b2125c01c084114032eca",
+    "tree": [
+      {
+        "path": ".github",
+        "mode": "040000",
+        "type": "tree",
+        "sha": "f1f7fd57aa1b6012543d3e52883dd2858dc9d15d",
+        "url": "https://api.github.com/repos/eu-digital-green-certificates/dcc-quality-assurance/git/trees/f1f7fd57aa1b6012543d3e52883dd2858dc9d15d",
+        "qrcode64": {
+          "sha": "07984193650c3aa1a3f4ad16208cf7829f833b0c",
+          "node_id": "MDQ6QmxvYjM3NTEwMTIxMzowNzk4NDE5MzY1MGMzYWExYTNmNGFkMTYyMDhjZjc4MjlmODMzYjBj",
+          "size": 2040,
+          "url": "https://api.github.com/repos/eu-digital-green-certificates/dcc-quality-assurance/git/blobs/07984193650c3aa1a3f4ad16208cf7829f833b0c",
+          "content": "iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8A\nAABVwtN+AAAHrUlEQVR4nO2cQa6rSgxEjTJgyBLYCWwMKUjZGNkJS2DIIIp/\nnWpI7nt/A7zWZfL5DXWlGLddLrtfxO/1e/1el7vGzFzjvkY0Gc2aj9zu7461\nqe9mPX3HHpFzaC336iCD3tXj6GbdjUL2W0Qn/B593JdolxA4X0OnlyuEdPmU\nndZtksWG2GW7+9LtY7Zaw57vfr+tvNfm+i9AtLjpp+5AMmc9XnoZIlPgiHbu\n64bkq9+mMfdBb6186VZ2Ejhzw/MzQxuiTkgcO35qthj6uGX3kO3kPfeM20IU\n0MbPV/y1XyqBOPTtCnOP5yaLsUsmWez5/7U/o+UVIb5y1md/Hj9fzh/eEPr5\nTy0rGOR2e8efVyUQLLF6d8v5bT6ymJy/ffFnshWKr+/36oMoxBPmlMXGDZdX\n7pp0J/wU+XiT2dj+j2fuzbpfG6Io7a3a6bF+fMvdQszi5896uvCfThtZ26A+\nyKjU3ZO6sVNDPktBZDt97E7fXHetonmwkBVCNrl3+xLpGqKVfxDGnxBTWYxN\nLz7WKsgrCuyfMF4RBJcIRfntthgi5jI7CvC+aJ2eKoXlq9kIh9eG6EcTqKGj\nmyPasSGSJMze1wsYJwpHqw0CC+P78gZF1MQ3h5drTS+KmqxntTF+omU9EG7l\n/KKjiu9ynZuLEZUgMJe7+ViUNRdbl4aQxcKb1pRDJDtubyBY4SVqojD+iu32\ng4zVBHGg5kVFNH1zVxZCvgOLHdQ6bTFiRHUQhXFZZyLgKaCvyt7d3GyOB9BR\n4oFKLHh5fvb+ZSFmj2KU+uZyb7YvmxsKpjtVTs7S5Ov8/PyKIArebwK1FZLw\n18+3Y5ZrjA7ZQDkuhvjEsZogWuHWW92Uoz+J6UMxj8SuYCBm5kdRHaSBcTm8\nL4gFKrG62fmMPaTkxjs303VB9mtDSul/16I8/92j7BSSwtdX3UyJhUn4n7U+\nSEndop735yYWZusMTuLkMySCRDZQPvuIXTVBitR5XzvbysyFZOYXOxfTSAQx\nDT8Y7FUhWoGFJYvlxSO0wzKhJksvq6DPt6fgUxNEFYNs9bBEC/cinxU/iKL2\nFLZ2++n8FUFGB7cSofMspzpZ57QiPYu0aL8cBqsK4uDm3e14T8Zq0HdzRikj\n7sme/Jm8PMSEJJV9J1cRqgstDCRhHI6Glomou3x1y5og5uCyE3IW7EQW4+tr\n74uhzEUAC6JAoGlXB4mPxPV2HHyZuVj+7NH6aGqIl9+tX+/XhmgjW6PcJorE\n3jXyQkD3Y+dhMTNv86WvD+LkLOe3Lt1QILvVVOgoHG2Bmsjz8ZL6IH7RTSdZ\nLMI7fnGDEYmrVJivs48R14YMhGc3hV1joGDeF/gYKbrIdeRmbe6flUU1kBHP\nR5V9FeuQlN0edh7WnyGgF98Yoj6IfMSPaYsfYgFaSTgcouM2ZmuzNcGoDoJU\nnyqmyWLFJrYdHeXVf3BEM7PDnN23y0IGMm2L/L7wfRXRjlGGPKTcxroldPvM\nYjVByvTZ5AYT7VPKDFsHZqa6WTueysJeEvVBRnSRuCdyVhrC9ANjIJY/g1I7\n3YlByL82pCkiB4tdaQpvU5TaaP16xPYZHagNkvCsmxcLIUHYImEXsYCQgBQ2\n5snRqoIMlgg+or3u6E8g5CMbvOnEqMZA1P0hD9YDGRGI7BJlR5DPFvOaB0bb\n8pjyeZuXXxtSRrKi92xP0fomP9gptiDUyVwxWt/7M6RXEwTRvkyptUXgZF5N\nqftxDhy6yETr6+uDeGYn50Dh85RaIhClxS77Eg3JRCpiXO/ykLdHGWgj+q6b\nI8qgjqlJw+yH8jUSQX2QkU6xa+Shc088yWJmYencxdiw8pn16/ogriuxCUOm\nbqhTRJWBpk3Bm0RGH+6Z39B3VYi73gxi0TbzPDQCruoJGApbOjgWwHRHnNyy\nJshA6Z+zu96l1URP/JBoyxAt8YApvK9CUg9kxGKl07ZZDYmikCB1WuAshwHo\nI38mu2qCcMKFKZhXKaEP5v1k75euFE6E1rePx365LMQ/q50dsklaZDFP4aH1\n3Z6evSu+8aNGrgdC24F6uDuYNBIBQTBKbo9yAoIDWh/nrwninjFVs1iKpxUZ\nyLNY8LJ6oCzmYWp0z/7iEEtcyAFl+1qkplp2U3huNvcPZR8Tl/og57kkeoXc\nydFdLrLPN4I8FNWTP/vfR5lqgHhGsbXLe9z/sZZlQjvdC7NxHwuIGiHlrOFt\n/RwBWF1iLQp4gcNYKcvCcPLykDJS2Fmt9BJjsm4Ue0jJzGwrJqkPYq2vVMFk\nMX19K3wWOJEICN7I9yPv1QeJIhFEGTZmcStOZIs5CjBJjeb76VdeFdIcM3UI\nA2d33Ie+KaeYXSpyneeUvlJnNRBfNFI9bnp+6aKQEMr2MoKKjnAOTtcEKUkq\nDIGylDPD7r/0nBkmy7un+D0ofVmIMzLzlvzzBY11d0rDpfcRAPYuEx/dq5xf\nqg/icdPJczxJPazsy/HosFZN/8V9RlUb+cxKIeUwS9omvcgHh0rLdt98ZC+O\npkStkDmijObBV15kLIhpFl2ERup5Pu3aEEu0WabUOB7NN3dmQ4FnpAWORks1\nv6J9PRCHvv34NxuG3gcMn85ncvm5/M07Lan4OH9NkN/r9/q9/vXrPwIxhkQ2\n6toEAAAAAElFTkSuQmCC\n",
+          "encoding": "base64"
+        }
+      }
+    ],
+    "truncated": false
+  }
+}
