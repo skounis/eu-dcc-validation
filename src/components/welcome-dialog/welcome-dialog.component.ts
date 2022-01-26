@@ -28,10 +28,17 @@ export class WelcomeDialogComponent implements OnInit {
     return this.welcomeForm.errors
   }
 
+  public get country() {
+    return this.store.country;
+  }
+
   public set country(value: string) {
     this.store.country = value;
   }
 
+  public get platform() {
+    return this.store.platform || PlatformEnum.Android;
+  }
   public set platform(value: PlatformEnum) {
     this.store.platform = value;
   }
