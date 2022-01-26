@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Delete results</h2>
+<mat-dialog-content class="mat-typography">
+    <p>
+        Are you sure you want to permatenlty delete all the results? 
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button color="warn" [mat-dialog-close]="true">Yes delete</button>
+    <button mat-button [mat-dialog-close]="false" cdkFocusInitial>No</button>
+</mat-dialog-actions>

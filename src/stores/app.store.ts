@@ -21,7 +21,7 @@ export class AppStore {
   }
   public set country(value: string) {
     this.results.metadata.country = value;
-    this.serialize();    
+    this.serialize();
   }
 
   public get platform() {
@@ -62,11 +62,22 @@ export class AppStore {
    * @param data 
    */
   setData(data: RepositoryContent) {
+    this.raw = data;
+    const mapped = this.mapRaw(data);
+    this.data.next(mapped);
+    // Set the current or first QRCode as selected
+    this.setSelected(this.selected.value || mapped[0])
+  }
+
+  /**
+   * Map raw data and prepara IQRCode structures
+   */
+  private mapRaw(data: RepositoryContent) {
     const COUNTRY = 0;
     const VERSION = 1;
     const FILE = 2;
-    this.raw = data;
-    const mapped = data.tree.map((i): IQRCode => {
+
+    return data.tree.map((i): IQRCode => {
       const parts = i.path.split('/');
       let item: IQRCode = {
         id: i.path,
@@ -79,9 +90,6 @@ export class AppStore {
       item = this.decorate(item);
       return item;
     });
-    this.data.next(mapped);
-    // Set the current or first QRCode as selected
-    this.setSelected(this.selected.value || mapped[0])
   }
 
   /**
@@ -96,6 +104,15 @@ export class AppStore {
    */
   getResults(): TestResult {
     return this.results;
+  }
+
+  /**
+   * Clear the results
+   */
+  flushResult() {
+    this.results.results = [];
+    this.serialize();
+    this.remap();
   }
   /**
    * Get the selected QR Code
@@ -146,7 +163,7 @@ export class AppStore {
    * Flush the selected/current QR code
    * // TODO: Review again
    */
-  flushSelectedQr() {
+  flushSelected() {
     this.selected.next(null);
   }
 
@@ -183,41 +200,37 @@ export class AppStore {
     console.log('Store: Capture the scan result: ', result)
     this.results.addEntry(result);
     this.serialize();
-    // Update data
-    if (this.raw) {
-      this.setData(this.raw);
-    }
+    this.remap();
   }
 
   /**
    * Store the results
    */
-  public serialize() {
+  serialize() {
     this.results.touch();
     this.localStorage.setItem(LocalStorageService.SCAN_RESULT_KEY, this.results);
   }
   /**
    * Clear the results
    */
-  public clear() {
+  clear() {
     this.localStorage.removeItem(LocalStorageService.SCAN_RESULT_KEY);
   }
 
   /**
-   * Load the results
+   * 
+   * @returns true if there were data available
    */
-  public deserialize(): any {
-    return this.localStorage.getItem(LocalStorageService.SCAN_RESULT_KEY);
-  }
-
-  /**
-   * The current index of the selected QR code
-   */
-  private index() {
-    const index = this.data.value.findIndex(i => {
-      return i.title === this.selected.value?.title
-    })
-    return index;
+  deserialize(): any {
+    const data = this.localStorage.getItem(LocalStorageService.SCAN_RESULT_KEY);
+    if (!data || !data.results || data.results.length < 1) {
+      return false;
+    }
+    // TODO: Introduce Objervability for the Results
+    // TODO: Move the Results in their own Store?
+    this.results.load(data);
+    this.remap();
+    return true;
   }
 
   /**
@@ -227,7 +240,7 @@ export class AppStore {
    * @param value the value
    * @returns Array of QR Codes
    */
-  public filter(property: string, value: any): IQRCode[] {
+  filter(property: string, value: any): IQRCode[] {
     return this.getData().value.filter(e => {
       return e[property as keyof IQRCode] == value;
     });
@@ -239,16 +252,35 @@ export class AppStore {
    * @param id QR code identifier
    * @returns qr code
    */
-  public find(id: string): IQRCode {
+  find(id: string): IQRCode {
     const items = this.filter('id', id);
     return items[0];
   }
 
-  public decorate(item: IQRCode): IQRCode {
+  decorate(item: IQRCode): IQRCode {
     const items = this.results.findEntry(item.id);
     if (!!items && items.length > 0) {
       item.result = items[0].result;
     }
     return item;
+  }
+
+  /**
+  * The current index of the selected QR code
+  */
+  private index() {
+    const index = this.data.value.findIndex(i => {
+      return i.title === this.selected.value?.title
+    })
+    return index;
+  }
+
+  /**
+  * Update data and notify subscribers for changes
+  */
+  private remap() {
+    if (this.raw) {
+      this.setData(this.raw);
+    }
   }
 }

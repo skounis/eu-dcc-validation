@@ -9,10 +9,10 @@ import { AppStore } from '../../stores/app.store';
 })
 export class ProgressComponent implements OnInit {
   public get value(): number {
-    return !!this.analytics ? this.analytics.codes() : 0;
+    return !!this.analytics ? this.analytics.codes() / this.analytics.codes() * 100 : 0;
   }
   public get progress(): number {
-    return !!this.analytics ? this.analytics.progress(null) : 0;
+    return !!this.analytics ? this.analytics.progress(null) / this.analytics.codes() * 100 : 0;
   }
   public get testResult(): typeof TestResultEnum {
     return TestResultEnum;

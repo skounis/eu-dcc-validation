@@ -1,5 +1,5 @@
 <div style="margin-bottom: 5px;">
-  <mat-progress-bar class="example-margin" color="primary" mode="determinate" [value]="progress" [bufferValue]=" value">
+  <mat-progress-bar class="example-margin" color="primary" mode="determinate" [value]="progress" [bufferValue]="value">
   </mat-progress-bar>
 </div>
 <mat-chip-list aria-label="Fish selection">
@@ -8,17 +8,14 @@
     {{analytics?.progress(null)}} / {{analytics?.codes()}}
   </mat-chip>
   <mat-chip color="primary" selected>
-    <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">check_circle</mat-icon>  -->
     Valid:
     {{analytics?.progress(testResult.Valid)}}
   </mat-chip>
   <mat-chip color="accent" selected>
-    <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">report_problem</mat-icon>  -->
     Invalid:
     {{analytics?.progress(testResult.Invalid)}}
   </mat-chip>
   <mat-chip color="warn" selected>
-    <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">error</mat-icon>  -->
     Error:
     {{analytics?.progress(testResult.Error)}}
   </mat-chip>
