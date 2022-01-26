@@ -12,6 +12,8 @@ export class TestResultComponent implements OnInit {
   model = { reason: '' }
   item: IQRCode | null;
 
+  requireDescription = false;
+
   constructor(private store: AppStore) {
     this.item = null;
     this.store.getSelected().subscribe((selected: IQRCode | null) => {
@@ -38,6 +40,9 @@ export class TestResultComponent implements OnInit {
    * Mark the QR code as invalid.
    */
   invalid(): void {
+    if(!this.validate()) {
+      return;
+    };
     console.log('Log warning.', this.model)
     this.report(TestResultEnum.Invalid)
   }
@@ -46,6 +51,9 @@ export class TestResultComponent implements OnInit {
    * Report an error during the scanning process.
    */
   error(): void {
+    if(!this.validate()) {
+      return;
+    };
     console.log('Log error.', this.model)
     this.report(TestResultEnum.Error)
   }
@@ -66,8 +74,16 @@ export class TestResultComponent implements OnInit {
       this.store.setMessage('ERROR: No QRcode selected. See your console.')
       console.error('No QRcode selected.');
     }
+    this.requireDescription = false;
   }
 
+  private validate() {
+    if (!this.model.reason) {
+      this.requireDescription = true;
+      return false;
+    }
+    return true;
+  }
   /**
    * Notify the result is submitted.
    */

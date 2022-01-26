@@ -6,9 +6,9 @@
 
     <mat-form-field appearance="fill" style="width: 100%;">
       <mat-label>Describe your details and submit your result.</mat-label>
-      <textarea matInput [(ngModel)]="model.reason"></textarea>
+      <textarea matInput [(ngModel)]="model.reason"></textarea>     
     </mat-form-field>
-
+    <p style="color: #f44336;" *ngIf="requireDescription">A description is required for Invalid QRs and Errors.</p>
   </mat-card-content>
   <mat-card-actions align="end">
     <button mat-button (click)="valid()">
