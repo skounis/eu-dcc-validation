@@ -11,6 +11,8 @@ export interface RepositoryContentItem {
   type: string;
   size: number;
   url: string;
+  data?: string;
+  hcert?: string;
 }
 
 export interface RepositoryNode {

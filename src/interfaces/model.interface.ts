@@ -151,6 +151,8 @@ export interface IQRCode {
   uri: string;
   /** The base64 representation of the QR Code. */
   qrcode64?: string;
+  /** The certificate. */
+  hcert?: string;
   /** The validation result */
   result?: TestResultEnum
 }
