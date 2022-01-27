@@ -9,7 +9,7 @@
     <mat-card-subtitle>Scan the QR with your verifier and submit the results.</mat-card-subtitle>
   </mat-card-header>
   <div class="dcc-qr-wrapper">
-    <img class="dcc-qr" mat-card-image [src]="imagePath" alt="DCC QR code">
+    <img class="dcc-qr" mat-card-image [src]="imagePath" alt="DCC QR code" (click)="zoom()">
   </div>
   <!-- <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
