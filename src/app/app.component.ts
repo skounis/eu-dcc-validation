@@ -82,7 +82,10 @@ export class AppComponent implements OnInit {
 
   openDownloadDialog() {
     this.export();
-    const data = this.downloadJsonHref;
+    const data = {
+      filename: this.store.getResults().filename,
+      url: this.downloadJsonHref
+    };
     const dialogRef = this.dialog.open(DownloadDialogComponent, {
       data: data
     });
