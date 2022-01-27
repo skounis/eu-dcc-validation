@@ -24,8 +24,7 @@ export class GithubService {
   };
 
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   getTree(): Observable<RepositoryContent> {
     let imageFilter = pipe(

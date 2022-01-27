@@ -89,6 +89,8 @@ export class AppStore {
         version: parts[VERSION],
         file: parts[FILE],
         uri: i.url,
+        qrcode64: i.data,
+        hcert: i.hcert
       }
       item = this.decorate(item);
       return item;
@@ -133,6 +135,11 @@ export class AppStore {
    * @param value The QR Code
    */
   setSelected(value: IQRCode) {
+    // Already populated.
+    if(!!value.qrcode64) {
+      this.selected.next(value);
+      return
+    }
     this.github.getImage(value.uri).subscribe({
       next: (item: any) => {
         value.qrcode64 = item;

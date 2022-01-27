@@ -48,7 +48,7 @@ export class CacheDataInterceptor implements HttpInterceptor {
       .pipe(map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
           // Capture the response and store it locally.
-          this.capture(event);
+          // this.capture(event);
         }
         return event;
       }));
