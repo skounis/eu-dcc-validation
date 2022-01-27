@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { IQRCode, TestResultEnum } from '../../interfaces/model.interface';
+import { MatDialog } from '@angular/material/dialog';
 import { AppStore } from '../../stores/app.store';
+import { IQRCode, TestResultEnum } from '../../interfaces/model.interface';
+import { QrDialogComponent } from '../qr-dialog/qr-dialog.component';
 
 @Component({
   selector: 'app-dccqr',
@@ -13,7 +15,7 @@ export class DCCQRComponent implements OnInit {
   item: IQRCode | null;
   imagePath: SafeResourceUrl | null = null;
 
-  constructor(private store: AppStore, private sanitizer: DomSanitizer) {
+  constructor(private store: AppStore, private sanitizer: DomSanitizer, public dialog: MatDialog) {
     this.item = null;
     this.store.getSelected().subscribe((selectedQr: IQRCode | null) => {
       this.item = selectedQr;
@@ -51,4 +53,12 @@ export class DCCQRComponent implements OnInit {
     }
   }
 
+  zoom() {
+    const data = {
+      url: this.imagePath
+    };
+    const dialogRef = this.dialog.open(QrDialogComponent, {
+      data: data
+    });
+  }
 }

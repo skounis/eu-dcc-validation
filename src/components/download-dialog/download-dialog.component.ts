@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-download-dialog',
@@ -15,7 +15,5 @@ export class DownloadDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  clear() {
-    
-  }
+  clear() { }
 }

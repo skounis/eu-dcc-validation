@@ -358,7 +358,7 @@
 <div class="dcc-toolbar">
   <mat-toolbar color="primary">
     <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
-      aria-label="Example icon-button with menu icon">
+      aria-label="EU DCC Validation">
       <mat-icon>menu</mat-icon>
     </button>
     <span>EU DCC Validation</span>
@@ -367,6 +367,10 @@
       <mat-chip (click)="welcome()">{{platform}}</mat-chip>
       <mat-chip (click)="welcome()">{{country}}</mat-chip>
     </mat-chip-list>
+    <a mat-button href="https://github.com/skounis/eu-dcc-validation/discussions" target="_blank" style="margin-left: .2rem; color: #fff;"
+      aria-label="About the project">
+      <mat-icon>support</mat-icon> GitHub
+    </a>
   </mat-toolbar>
 </div>
 
@@ -397,8 +401,11 @@
     <mat-toolbar style="width: 100%;">
       <app-progress></app-progress>
       <span class="example-spacer"></span>
-      <button mat-button color="warn" (click)="flush()"><mat-icon>delete</mat-icon> Clear</button> 
-      <button mat-button color="primary" (click)="upload()" class="example-icon" aria-label="Example icon-button with share icon">
+      <button mat-button color="warn" (click)="flush()">
+        <mat-icon>delete</mat-icon> Clear
+      </button>
+      <button mat-button color="primary" (click)="upload()" class="example-icon"
+        aria-label="Example icon-button with share icon">
         <mat-icon>cloud_upload</mat-icon> Export and Submit
       </button>
     </mat-toolbar>
