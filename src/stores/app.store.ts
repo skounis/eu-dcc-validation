@@ -63,6 +63,9 @@ export class AppStore {
    */
   setData(data: RepositoryContent) {
     this.raw = data;
+    // TODO: Move this responsibility in the constructor
+    //       of a create() factory of the model. 
+    this.results.metadata.commit = data.sha;
     const mapped = this.mapRaw(data);
     this.data.next(mapped);
     // Set the current or first QRCode as selected
