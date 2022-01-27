@@ -1,24 +1,32 @@
 <h2 mat-dialog-title>Download and Submit</h2>
 <mat-dialog-content class="mat-typography">
-  <p>Use this application for navigating through all the available QR Codes. When finish download
-      the test results and submit the <code>results.json</code> if in the <a href="https://validationcycleportal.t-assets.de/#/login" target="_blank">Validation Portal.</a>
-  </p>
+  <p>Please use this application for navigating through all available QR codes. When finished, please download the test
+    results to your PC and submit the results to the <a href="https://validationcycleportal.t-assets.de/#/login"
+      target="_blank">Validation Portal</a>.</p>
 
   <h3>Download</h3>
-  <p>Your test results are prepared and are ready for download. Please use the button that follows and download the <code>results.json</code> file.</p>
+  <p>On pushing the Download Button the test results are copied to your standard download folder on your computer. File
+    name: <code>[2-digit country code]_[OS type]_[timestamp].json</code>.</p>
 
-  <h3>Upload to the Validation Portal</h3>
-  <p>Visit the Validation portal and submit the downloaded <code>results.json</code>. For accessing the portal use the token which related to your country.</p>
-  <ul>
-      <li><a href="https://validationcycleportal.t-assets.de/#/login" target="_blank">Validation Portal.</a></li>
-  </ul>
+  <p class="dcc-button-wrapper"><a *ngIf="!!data" mat-raised-button color="primary" title="Download JSON" [href]="data"
+      download="test-results.json" (click)="clear()">Download</a>
+  </p>
 
-  <h3>Support</h3>
-  <p>For help and support please contact ...</p>
 
-  <p style="text-align: center;"><a *ngIf="!!data" mat-raised-button color="primary" title="Download JSON" [href]="data"
-    download="test-results.json" (click)="clear()" style="width: 60%; margin: auto;">Download</a>
-</p>
+  <h3>Submit</h3>
+  <p>On pushing the Submit Button, you will be requested to enter a token which you will receive via email. In the
+    following pop-up box, please select the upload button, navigate to your standard download folder, select the
+    appropriate file, and push the Send Button</p>
+
+
+  <p>Visit the Validation portal and submit the downloaded <code>results.json</code>. For accessing the portal use the
+    token which related to your country.</p>
+
+  <p class="dcc-button-wrapper"><a mat-raised-button color="primary" title="Validation Portal - Submit"
+      href="https://validationcycleportal.t-assets.de/#/login" target="_blank">Submit</a>
+  </p>
+  <p>Please repeat the process for any other platform (iOS, Android, Other) you have in use!</p>
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Close</button>

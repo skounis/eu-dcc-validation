@@ -1,0 +1,11 @@
+p.dcc-button-wrapper {
+    text-align: center; 
+}
+
+p.dcc-button-wrapper a {
+  width: 60%;
+}
+.mat-dialog-content .mat-button-base {
+    margin: 1rem !important;
+    padding: .3rem;
+}
