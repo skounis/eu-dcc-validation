@@ -13,7 +13,7 @@
  * `20220117-NL-ANDROID.json`
  * `20220117-NL-IOS.json`
  */
- import * as _ from 'lodash';
+import * as _ from 'lodash';
 
 /**
  * Target platforms
@@ -71,8 +71,17 @@ export interface ITestResultEntry {
 }
 
 export class TestResult implements ITestResult {
+
   metadata: ITestResultMetadata;
   results: ITestResultEntry[];
+
+  get filename(): string {
+    const cc = this.metadata.country || 'country';
+    const pl = this.metadata.platform || 'platform';
+    const ts = this.metadata.completedOn || 'timestamp';
+    return `${cc}_${pl}_${ts}.json`;
+  }
+  
   constructor() {
     this.metadata = new TestResultMetadata();
     // TODO: Should this become a more smart collect?
@@ -127,7 +136,7 @@ export class TestResultMetadata implements ITestResultMetadata {
 /**
  * The Rich representation of an EU DCC
  */
- export interface IQRCode {
+export interface IQRCode {
   /** Unique ID (is the same with the file) */
   id: string;
   /** The country issued this DCC. */
@@ -147,7 +156,7 @@ export class TestResultMetadata implements ITestResultMetadata {
 }
 
 export class Analytics {
-  constructor(private rqCodes: Array<IQRCode>, private results: TestResult) {}
+  constructor(private rqCodes: Array<IQRCode>, private results: TestResult) { }
 
   /**
    * @returns The number of all the QR Codes for testing.
@@ -163,6 +172,6 @@ export class Analytics {
   public progress(category: TestResultEnum | null): number {
     // Return all
     if (!category) return this.results.results.length;
-    return this.results.results.filter(value => value.result === category).length  
+    return this.results.results.filter(value => value.result === category).length
   }
 }

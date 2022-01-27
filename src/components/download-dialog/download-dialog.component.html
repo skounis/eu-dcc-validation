@@ -8,8 +8,8 @@
   <p>On pushing the Download Button the test results are copied to your standard download folder on your computer. File
     name: <code>[2-digit country code]_[OS type]_[timestamp].json</code>.</p>
 
-  <p class="dcc-button-wrapper"><a *ngIf="!!data" mat-raised-button color="primary" title="Download JSON" [href]="data"
-      download="test-results.json" (click)="clear()">Download</a>
+  <p class="dcc-button-wrapper"><a *ngIf="!!data.url" mat-raised-button color="primary" title="Download JSON" [href]="data.url"
+      [download]="data.filename" (click)="clear()">Download</a>
   </p>
 
 
