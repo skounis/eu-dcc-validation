@@ -19,7 +19,7 @@ jobs:
           start: npm start
           browser: chrome
           headless: true
-          record: true
+          record: false
           wait-on: 'http://localhost:4200'
           wait-on-timeout: 180
         # env:
