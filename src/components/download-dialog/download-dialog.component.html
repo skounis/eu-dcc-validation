@@ -4,16 +4,16 @@
     results to your PC and submit the results to the <a href="https://validationcycleportal.t-assets.de/#/login"
       target="_blank">Validation Portal</a>.</p>
 
-  <h3>Download</h3>
+  <h3>Step 1: Download</h3>
   <p>On pushing the Download Button the test results are copied to your standard download folder on your computer. File
     name: <code>[2-digit country code]_[OS type]_[timestamp].json</code>.</p>
 
   <p class="dcc-button-wrapper"><a *ngIf="!!data.url" mat-raised-button color="primary" title="Download JSON" [href]="data.url"
-      [download]="data.filename" (click)="clear()">Download</a>
+      [download]="data.filename" (click)="clear()">1. Download</a>
   </p>
 
 
-  <h3>Submit</h3>
+  <h3>Step 2: Submit</h3>
   <p>On pushing the Submit Button, you will be requested to enter a token which you will receive via email. In the
     following pop-up box, please select the upload button, navigate to your standard download folder, select the
     appropriate file, and push the Send Button</p>
@@ -23,7 +23,7 @@
     token which related to your country.</p>
 
   <p class="dcc-button-wrapper"><a mat-raised-button color="primary" title="Validation Portal - Submit"
-      href="https://validationcycleportal.t-assets.de/#/login" target="_blank">Submit</a>
+      href="https://validationcycleportal.t-assets.de/#/login" target="_blank">2. Submit</a>
   </p>
   <p>Please repeat the process for any other platform (iOS, Android, Other) you have in use!</p>
 
