@@ -48,7 +48,13 @@ export class DCCDescriptionComponent implements OnInit {
 
   item: IQRCode | null;
   description: string = '';
+  get platform() {
+    return this.store.platform;
+  }
 
+  get country() {
+    return this.store.country;
+  }
   constructor(private store: AppStore) {
     this.dataSource2.data = DCC_DATA;
     this.item = null;

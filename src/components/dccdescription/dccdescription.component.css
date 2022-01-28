@@ -8,6 +8,27 @@
   display: flex;
   flex-direction: column;
 }
+.mat-card-header {
+  background-position: 96% 10%;
+  background-size: 74px;
+  background-repeat: no-repeat;
+}
+
+.mat-card-header.dcc-ios {
+  background-image: url(../../assets/logo-ios.png);
+}
+
+.mat-card-header.dcc-android {
+  background-image: url(../../assets/logo-android.png);
+  background-position: 96% -8px;
+  background-size: 100px;
+}
+
+.mat-card-header.dcc-web {
+  background-image: url(../../assets/logo-html5.png);
+  background-position: 100% -3px;
+  background-size: 77px;
+}
 
 .mat-card-content {
   flex-grow: 1;
