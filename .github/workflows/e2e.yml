@@ -24,5 +24,5 @@ jobs:
           wait-on-timeout: 180
         env:
           # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.dashboardRecordKey }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
       
