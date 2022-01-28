@@ -1,0 +1,17 @@
+name: example-basic
+on:
+  push:
+    branches:    
+      - 'master'
+  pull_request:
+jobs:
+  basic-ubuntu-20:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress.io
+        uses: cypress-io/github-action@v2.9.7
+
+      
