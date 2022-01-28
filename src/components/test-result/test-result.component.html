@@ -6,18 +6,18 @@
 
     <mat-form-field appearance="fill" style="width: 100%;">
       <mat-label>Describe your details and submit your result.</mat-label>
-      <textarea matInput [(ngModel)]="model.reason"></textarea>     
+      <textarea matInput [(ngModel)]="model.reason" class="dcc-text-reason"></textarea>     
     </mat-form-field>
     <p style="color: #f44336;" *ngIf="requireDescription">A description is required for Invalid QRs and Errors.</p>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button (click)="valid()">
+    <button mat-button (click)="valid()" class="dcc-btn-valid">
       <mat-icon>check_circle</mat-icon> Valid
     </button>
-    <button mat-button (click)="invalid()" color="accent">
+    <button mat-button (click)="invalid()" color="accent" class="dcc-btn-invalid">
       <mat-icon>report_problem</mat-icon> Invalid
     </button>
-    <button mat-button (click)="error()" color="warn">
+    <button mat-button (click)="error()" color="warn" class="dcc-btn-error">
       <mat-icon>error</mat-icon> Error
     </button>
   </mat-card-actions>
