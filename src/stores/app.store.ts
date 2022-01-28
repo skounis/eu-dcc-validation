@@ -90,7 +90,8 @@ export class AppStore {
         file: parts[FILE],
         uri: i.url,
         qrcode64: i.data,
-        hcert: i.hcert
+        hcert: i.hcert,
+        dcc: i.dcc
       }
       item = this.decorate(item);
       return item;
