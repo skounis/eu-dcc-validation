@@ -1,5 +1,6 @@
 <h2 mat-dialog-title>Delete results</h2>
 <mat-dialog-content class="mat-typography">
+    <p *ngIf="!!data.message">{{data.message}}</p>
     <p>
         Are you sure you want to permatenlty delete all the results? 
     </p>
