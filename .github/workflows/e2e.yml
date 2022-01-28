@@ -1,4 +1,4 @@
-name: example-basic
+name: E2E Test
 on:
   push:
     branches:    
