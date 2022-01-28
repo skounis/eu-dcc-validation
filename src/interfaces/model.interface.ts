@@ -126,7 +126,7 @@ export class TestResultMetadata implements ITestResultMetadata {
   commit: string;
   platform: PlatformEnum;
   constructor(country?: string, completedOn?: Date, commit?: string, platform?: PlatformEnum) {
-    this.country = country || 'EL';
+    this.country = country || 'AE';
     this.completedOn = completedOn || new Date();
     this.commit = commit || '';
     this.platform = platform || PlatformEnum.Android

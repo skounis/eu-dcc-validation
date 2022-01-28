@@ -94,10 +94,33 @@ export class AppComponent implements OnInit {
     });
   }
 
+  reset() {
+    if(this.store.getResults().results.length > 0) {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        disableClose: true,
+        data: {
+          message: 'There is already a testing session in progress. If you change the platform or the country the stored results will be deleted.'
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+        if(!!result) {
+          this.store.flushResult();
+          this.store.setMessage('All the results are deleted.')
+          this.welcome();
+        }
+      });
+    } else {
+      this.welcome();
+    }
+  }
+
   /**
    * Open the welcome dialog. 
    */
   public welcome() {
+
     const dialogRef = this.dialog.open(WelcomeDialogComponent, {
       disableClose: true,
       data: {}
