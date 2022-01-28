@@ -13,7 +13,9 @@ jobs:
 
       - name: Cypress.io
         uses: cypress-io/github-action@v2
+        timeout-minutes: 10
         with:
+          build: npm run build
           start: npm start
 
       
