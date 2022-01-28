@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
 })
 export class StaticService {
 
-  url = 'https://raw.githubusercontent.com/ryanbnl/dcc-quality-assurance/test-json-generator/qa.json'
+  url = 'https://raw.githubusercontent.com/eu-digital-green-certificates/dcc-quality-assurance/validation6/qa.json'
   
   options = { 
     headers: { 
