@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { AppStore } from '../../stores/app.store';
-import { PlatformEnum } from '../../interfaces/model.interface';
-import * as _ from 'lodash';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import * as _ from 'lodash';
+
+import { AppStore } from '../../stores/app.store';
+import { environment } from '../../environments/environment';
+import { PlatformEnum } from '../../interfaces/model.interface';
 
 @Component({
   selector: 'app-welcome-dialog',
@@ -13,6 +15,10 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./welcome-dialog.component.css']
 })
 export class WelcomeDialogComponent implements OnInit {
+
+  get acceptUserCredentials() {
+    return environment.github.acceptUserCredentials;
+  }
 
   countries: Array<string> = [];
   filteredOptions!: Observable<string[]>;
