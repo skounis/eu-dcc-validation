@@ -22,7 +22,7 @@ describe('The application loads', () => {
     cy.contains('EL');
 
     cy.get('.dcc-main-menu').click()
-    cy.get(':nth-child(369) > .mat-focus-indicator > .mat-button-wrapper').scrollIntoView().should('be.visible');
+    cy.get(':nth-child(293) > .mat-focus-indicator > .mat-button-wrapper').scrollIntoView().should('be.visible');
   })
 
 
