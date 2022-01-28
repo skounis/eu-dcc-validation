@@ -1,4 +1,8 @@
 <mat-card>
+  <mat-card-header [ngClass]="'dcc-' + platform.toLowerCase()">
+    <mat-card-title>Target Platform: <span>{{platform}}</span></mat-card-title>
+    <mat-card-subtitle>Country: <span>{{country}}</span> </mat-card-subtitle>
+  </mat-card-header>
   <mat-card-content>
     <mat-tree *ngIf="false" class="dcc-qr-description" [dataSource]="dataSource2" [treeControl]="treeControl"
       style="flex-grow: 1; flex-shrink: 1">
