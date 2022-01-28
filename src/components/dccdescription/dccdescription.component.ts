@@ -47,13 +47,14 @@ const DCC_DATA: TreeNode[] = [
 export class DCCDescriptionComponent implements OnInit {
 
   item: IQRCode | null;
+  description: string = '';
 
   constructor(private store: AppStore) {
     this.dataSource2.data = DCC_DATA;
     this.item = null;
     this.store.getSelected().subscribe((selected: IQRCode | null) => {
       this.item = selected;
-      console.log('DCCDescriptionComponent: Selected: ', this.item)
+      this.description = JSON.stringify(selected?.dcc, null,2)
     });
   }
 

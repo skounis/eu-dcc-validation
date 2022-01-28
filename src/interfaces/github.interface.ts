@@ -13,6 +13,7 @@ export interface RepositoryContentItem {
   url: string;
   data?: string;
   hcert?: string;
+  dcc?: any;
 }
 
 export interface RepositoryNode {

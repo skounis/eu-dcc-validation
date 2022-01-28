@@ -153,6 +153,8 @@ export interface IQRCode {
   qrcode64?: string;
   /** The certificate. */
   hcert?: string;
+  /** The certificate unpacked*/
+  dcc?: any;
   /** The validation result */
   result?: TestResultEnum
 }
