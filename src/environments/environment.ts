@@ -11,6 +11,9 @@ export const environment = {
   api: {
     base: 'https://some-domain.com/'
   },
+  static: {
+    endpoint: 'https://raw.githubusercontent.com/eu-digital-green-certificates/dcc-quality-assurance/validation6/qa.json'
+  },
   github: {
     acceptUserCredentials: false,
     endpoint: 'https://api.github.com/repos/eu-digital-green-certificates/dcc-quality-assurance/git/trees/validation6?recursive=1',

@@ -9,8 +9,8 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class StaticService {
-
-  url = 'https://raw.githubusercontent.com/eu-digital-green-certificates/dcc-quality-assurance/validation6/qa.json'
+  
+  url = environment.static.endpoint;
   
   options = { 
     headers: { 
