@@ -13,7 +13,7 @@ export const environment = {
   },
   github: {
     acceptUserCredentials: false,
-    endpoint: 'https://api.github.com/repos/eu-digital-green-certificates/dcc-quality-assurance/git/trees/main?recursive=1',
+    endpoint: 'https://api.github.com/repos/eu-digital-green-certificates/dcc-quality-assurance/git/trees/validation6?recursive=1',
     // Enable basic authentication for GitHub
     // Increases the API calls limit
     // https://github.com/settings/tokens
