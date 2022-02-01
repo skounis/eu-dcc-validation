@@ -8,6 +8,7 @@ import * as _ from 'lodash';
 import { AppStore } from '../../stores/app.store';
 import { environment } from '../../environments/environment';
 import { PlatformEnum } from '../../interfaces/model.interface';
+import { countries as countriesList } from '../../assets/countries.data';
 
 @Component({
   selector: 'app-welcome-dialog',
@@ -39,7 +40,7 @@ export class WelcomeDialogComponent implements OnInit {
   public get platform() {
     return this.store.platform || PlatformEnum.Android;
   }
-  
+
   public set platform(value: PlatformEnum) {
     this.store.platform = value;
   }
@@ -91,16 +92,14 @@ export class WelcomeDialogComponent implements OnInit {
   }
 
   private loadCountries() {
-    let grouped = _.groupBy(this.store.getData().value, 'country');
-    return Object.keys(grouped);
+    const grouped = _.groupBy(this.store.getData().value, 'country');
+    return  _.union(Object.keys(grouped),countriesList).sort();
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.countries.filter(option => option.toLowerCase().includes(filterValue));
   }
-
-
 
   createCountriesValidator(): ValidatorFn {
     // https://blog.angular-university.io/angular-custom-validators/
