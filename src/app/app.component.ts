@@ -131,7 +131,7 @@ export class AppComponent implements OnInit {
    * Flush the test results from Store and Local storage.
    */
   flush() {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {});
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {data: {}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       if(!!result) {
