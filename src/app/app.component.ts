@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DownloadDialogComponent } from '../components/download-dialog/download-dialog.component';
 import { WelcomeDialogComponent } from '../components/welcome-dialog/welcome-dialog.component';
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
+import packageJSON from '../../package.json'
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
     return this.store.platform;
   }
 
+  version = packageJSON.version;
   title = 'dcc-validation-wire';
   showFiller = false;
 
@@ -32,6 +34,7 @@ export class AppComponent implements OnInit {
     private sanitizer: DomSanitizer,
     readonly snackBar: MatSnackBar,
     public dialog: MatDialog) {
+    
     this.store.getMessage().subscribe((message: string) => {
       if (!message) { return }
       this.open(message);

@@ -1,6 +1,7 @@
 {
   "name": "dcc-validation-wire",
-  "version": "0.0.0",
+  "version": "1.0.2",
+  "description": "EU DCC Validation Portal.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,6 +12,8 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
+  "author": "Stavros Kounis",
+  "license": " EUPL-1.2 License",
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.1.0",
