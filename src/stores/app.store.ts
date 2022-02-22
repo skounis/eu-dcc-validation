@@ -240,6 +240,7 @@ export class AppStore {
     // TODO: Introduce Objervability for the Results
     // TODO: Move the Results in their own Store?
     this.results.load(data);
+    this.sanitize();
     this.remap();
     return data;
   }
@@ -274,6 +275,17 @@ export class AppStore {
       item.result = items[0].result;
     }
     return item;
+  }
+
+  /**
+   * Check the stored results and remove duplicates
+   */
+  sanitize() {
+    // Get all the certificate keys
+    const keys = this.data.value.map(v => v.id);
+    // Remove orphans
+    this.results.sanitize(keys);
+    this.serialize();
   }
 
   /**

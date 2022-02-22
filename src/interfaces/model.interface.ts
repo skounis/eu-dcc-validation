@@ -116,7 +116,18 @@ export class TestResult implements ITestResult {
   load(data: ITestResult) {
     this.metadata = data.metadata; //TODO use new TestResultMetadata(data.metadata);
     this.results = data.results;
+  }
 
+  /**
+   * Remove orphans based on a list of existing/valid keys
+   * @param keys
+   */
+  sanitize(keys: string[]) {
+    const items = this.results.length;
+    _.remove(this.results, (entry) => {
+      return !keys.includes(entry.file);
+    });
+    console.log(`EU DCC: ${items - this.results.length} orphans removed.`)
   }
 }
 
