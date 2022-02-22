@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
   }
 
   upload() {
-    this.store.setMessage('Not implemented!')
+    this.store.sanitize();
     this.openDownloadDialog();
   }
 
