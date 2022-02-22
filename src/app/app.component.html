@@ -377,8 +377,9 @@
 <div class="content" role="main">
   <mat-drawer-container class="dcc-container" autosize>
     <!-- Drawer -->
-    <mat-drawer #drawer class="dcc-sidenav" mode="side">
+    <mat-drawer #drawer class="dcc-sidenav" mode="side">  
       <app-qrtree></app-qrtree>
+      <div style="padding: 1rem;"><small>ver: {{version}}</small></div>
     </mat-drawer>
     <!-- Content -->
     <div class="dcc-content">
