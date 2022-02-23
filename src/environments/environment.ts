@@ -12,7 +12,7 @@ export const environment = {
     base: 'https://some-domain.com/'
   },
   static: {
-    endpoint: 'https://s3.us-east-2.amazonaws.com/appseed.io/public/eu-dcc-validation/main.json'
+    endpoint: 'https://validationcycleportal.t-assets.de/json/currentState.json'
   },
   github: {
     acceptUserCredentials: false,
