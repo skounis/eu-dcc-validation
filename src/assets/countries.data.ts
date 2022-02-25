@@ -67,4 +67,10 @@ export const countries: string[] = ['AT',
     'ME',
     'ID',
     'BJ',
-    'XX']
+    'XX',
+    'CO',
+    'ID',
+    'MY',
+    'PH',
+    'SC',
+    'BH']
