@@ -1,6 +1,6 @@
 {
   "name": "dcc-validation-wire",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "EU DCC Validation Portal.",
   "scripts": {
     "ng": "ng",
