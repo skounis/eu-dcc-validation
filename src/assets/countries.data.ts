@@ -74,5 +74,6 @@ export const countries: string[] = ['AT',
     'PH',
     'SC',
     'BH',
-    'XK']
+    'XK',
+    'PE']
 
