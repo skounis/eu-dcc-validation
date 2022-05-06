@@ -117,6 +117,14 @@ Have an idea, a question or a comment to share?
 * Start a discussion: https://github.com/skounis/eu-dcc-validation/discussions/
 * Join lfph.io in Slack: https://lfpublichealth.slack.com/
 
+# Contributors 
+
+<a href="https://github.com/skounis/eu-dcc-validation/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=skounis/eu-dcc-validation" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+
 # Licensing
 Copyright (c) 2022 Stavros Kounis (Directorate-General CONNECT), Ryan Barrett (Dutch Ministry of Health, Science, and Sports), Sofia Atsalou and all other contributors
 
