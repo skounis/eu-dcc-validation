@@ -49,7 +49,6 @@ export const countries: string[] = ['AT',
     'PA',
     'AL',
     'TG',
-    'TG',
     'AM',
     'GE',
     'AE',
@@ -76,5 +75,9 @@ export const countries: string[] = ['AT',
     'BH',
     'XK',
     'PE',
-    'MG']
+    'MG',
+    'EC',
+    'OM',
+    'FJ',
+    'KR']
 
