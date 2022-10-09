@@ -112,6 +112,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+## CI/CD
+The application is automatically deployed on Firebase:
+- On PR: See details in the PR page
+- On merge: https://eu-dcc-validation.web.app/
+
 # Discussion
 Have an idea, a question or a comment to share? 
 * Start a discussion: https://github.com/skounis/eu-dcc-validation/discussions/
